@@ -23,7 +23,7 @@ lspconfig.gopls.setup {
   capabilities = nvlsp.capabilities,
   settings = {
     gopls = {
-      gofumpt = true
+      gofumpt = false
     }
   }
 }
