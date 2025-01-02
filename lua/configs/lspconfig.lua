@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "pylsp", "lua_ls", "gopls", "vale_ls"}
+local servers = { "pylsp", "lua_ls", "gopls", "vale_ls", "dockerls"}
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -23,7 +23,7 @@ lspconfig.gopls.setup {
   capabilities = nvlsp.capabilities,
   settings = {
     gopls = {
-      gofumpt = true
+      gofumpt = false
     }
   }
 }
