@@ -1,4 +1,16 @@
 return {
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require "configs.nvtree"
+    end,
+  },
   {
     "stevearc/conform.nvim",
     opts = require "configs.conform",
@@ -14,7 +26,7 @@ return {
 
   {
     "mfussenegger/nvim-lint",
-    lazy=false,
+    lazy = false,
     config = function()
       require('lint').linters_by_ft = {
         make = { 'checkmake' }
