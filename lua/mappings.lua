@@ -3,8 +3,11 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local builtin = require 'telescope.builtin'
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- Telescope
+vim.keymap.set('n', '<leader>fW', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+
 map("i", "jk", "<ESC>")
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree" })
 map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
