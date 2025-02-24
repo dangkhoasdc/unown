@@ -111,4 +111,15 @@ return {
     end,
   },
 
+  -- better search
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "<leader>ss", mode = { "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  }
 }
