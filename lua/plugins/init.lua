@@ -121,5 +121,19 @@ return {
     keys = {
       { "<leader>ss", mode = { "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
+  },
+
+  -- code outline
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    keys = {
+      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial Toggle" }
+    },
   }
 }
