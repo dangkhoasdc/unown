@@ -27,8 +27,8 @@ return {
     "mfussenegger/nvim-lint",
     lazy = false,
     config = function()
-      require('lint').linters_by_ft = {
-        make = { 'checkmake' }
+      require("lint").linters_by_ft = {
+        make = { "checkmake" },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
@@ -45,7 +45,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "python", "go", "diff"
+        "python",
+        "go",
+        "diff",
       },
     },
   },
@@ -58,14 +60,15 @@ return {
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
+    build = "make install_jsregexp",
   },
 
   {
     "folke/trouble.nvim",
     opts = {
       preview = {
-        type = "float"
-      }
+        type = "float",
+      },
     }, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     lazy = false,
@@ -80,7 +83,7 @@ return {
         "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
       },
-    }
+    },
   },
 
   -- Movements
@@ -89,16 +92,16 @@ return {
     lazy = false,
     config = function()
       -- Fix: https://github.com/ggandor/leap.nvim/issues/224
-      vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
-      vim.keymap.set({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
-      vim.keymap.set({ 'n', 'x', 'o' }, 'gs', '<Plug>(leap-from-window)')
+      vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+      vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
+      vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
     end,
   },
 
   -- Undo
   {
     "mbbill/undotree",
-    cmd = "UndotreeToggle"
+    cmd = "UndotreeToggle",
   },
 
   -- Comments
@@ -106,7 +109,7 @@ return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "TodoQuickFix",
-    opts = {}
+    opts = {},
   },
 
   -- folding
@@ -115,13 +118,13 @@ return {
     dependencies = { "kevinhwang91/promise-async" },
     lazy = false,
     config = function()
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-      require('ufo').setup({
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+      require("ufo").setup {
         provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter', 'indent' }
-        end
-      })
+          return { "treesitter", "indent" }
+        end,
+      }
     end,
   },
 
@@ -139,15 +142,15 @@ return {
 
   -- code outline
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     opts = {},
     -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial Toggle" }
+      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial Toggle" },
     },
   },
 
@@ -156,8 +159,14 @@ return {
     "danymat/neogen",
     config = true,
     keys = {
-      { "<leader>ga", ":lua require('neogen').generate()<CR>", desc = "[G]enerate [A]nnotations", noremap = true, silent = true }
-    }
+      {
+        "<leader>ga",
+        ":lua require('neogen').generate()<CR>",
+        desc = "[G]enerate [A]nnotations",
+        noremap = true,
+        silent = true,
+      },
+    },
   },
 
   -- UI
@@ -176,8 +185,8 @@ return {
         },
         signature = {
           enabled = false,
-        }
-      }
+        },
+      },
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -186,12 +195,12 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
-    }
+    },
   },
 
   -- save and restore sessions
   {
-    'rmagatti/auto-session',
+    "rmagatti/auto-session",
     lazy = false,
 
     ---enables autocomplete for opts
@@ -218,8 +227,7 @@ return {
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
   },
-
 }
