@@ -98,7 +98,7 @@ return {
   -- Undo
   {
     "mbbill/undotree",
-    lazy = false,
+    cmd = "UndotreeToggle"
   },
 
   -- Comments
@@ -106,7 +106,6 @@ return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "TodoQuickFix",
-    lazy = false,
     opts = {}
   },
 
