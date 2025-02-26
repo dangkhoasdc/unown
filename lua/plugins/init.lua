@@ -2,11 +2,10 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
       require "configs.nvtree"
     end,
@@ -63,9 +62,25 @@ return {
 
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {
+      preview = {
+        type = "float"
+      }
+    }, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     lazy = false,
+    keys = {
+      {
+        "<leader>tt",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>tl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+    }
   },
 
   -- Movements
@@ -151,7 +166,19 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+        hover = {
+          enabled = false,
+        },
+        signature = {
+          enabled = false,
+        }
+      }
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
