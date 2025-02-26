@@ -135,5 +135,14 @@ return {
     keys = {
       { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial Toggle" }
     },
-  }
+  },
+
+  -- annotations
+  {
+    "danymat/neogen",
+    config = true,
+    keys = {
+      { "<leader>ga", ":lua require('neogen').generate()<CR>", desc = "[G]enerate [A]nnotations", noremap = true, silent = true }
+    }
+  },
 }
