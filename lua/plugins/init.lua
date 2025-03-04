@@ -211,10 +211,9 @@ return {
 
   -- window management
   {
-    'mrjones2014/smart-splits.nvim',
-    lazy=false,
+    "mrjones2014/smart-splits.nvim",
     opts = {
-      default_amount = 10
-    }
-  }
+      default_amount = 10,
+    },
+  },
 }
