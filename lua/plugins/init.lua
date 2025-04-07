@@ -92,7 +92,7 @@ return {
     lazy = false,
     config = function()
       -- Fix: https://github.com/ggandor/leap.nvim/issues/224
-      vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+      vim.keymap.set({ "n", "x", "o" }, "ss", "<Plug>(leap-forward)")
       vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
       vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
     end,
@@ -136,7 +136,7 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "<leader>ss", mode = { "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "<leader>sS", mode = { "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
 
@@ -218,8 +218,15 @@ return {
   },
 
   -- mini
-  { 'echasnovski/mini.ai', version = false },
-  { 'echasnovski/mini.surround', version = false },
+  { 'echasnovski/mini.ai', version = false, lazy=false, },
+  { 
+    'echasnovski/mini.surround', 
+    version = false, 
+    lazy=false,
+    config = function()
+      require('mini.surround').setup()
+    end,
+  },
 
   -- # PROGRAMMING LANGUAGES
   -- Python
@@ -275,5 +282,12 @@ return {
         },
       },
     },
+  },
+
+  -- JSON
+  {
+    "gennaro-tedesco/nvim-jqx",
+    event = {"BufReadPost"},
+    ft = { "json", "yaml" },
   },
 }
