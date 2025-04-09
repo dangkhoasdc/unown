@@ -218,76 +218,60 @@ return {
   },
 
   -- mini
-  { 'echasnovski/mini.ai', version = false, lazy=false, },
-  { 
-    'echasnovski/mini.surround', 
-    version = false, 
-    lazy=false,
+  { "echasnovski/mini.ai", version = false, lazy = false },
+  {
+    "echasnovski/mini.surround",
+    version = false,
+    lazy = false,
     config = function()
-      require('mini.surround').setup()
+      require("mini.surround").setup()
     end,
   },
 
-  -- # PROGRAMMING LANGUAGES
-  -- Python
+  -- navigations
   {
-    "kiyoon/python-import.nvim",
-    -- build = "pipx install . --force",
-    build = "uv tool install . --force --reinstall",
-    keys = {
-      {
-        "<A-i>",
-        function()
-          require("python_import.api").add_import_current_word_and_notify()
-        end,
-        mode = { "i", "n" },
-        silent = true,
-        desc = "Add python import",
-        ft = "python",
-      },
-    },
-    opts = {
-      -- Example 1:
-      -- Default behaviour for `tqdm` is `from tqdm.auto import tqdm`.
-      -- If you want to change it to `import tqdm`, you can set `import = {"tqdm"}` and `import_from = {tqdm = nil}` here.
-      -- If you want to change it to `from tqdm import tqdm`, you can set `import_from = {tqdm = "tqdm"}` here.
-
-      -- Example 2:
-      -- Default behaviour for `logger` is `import logging`, ``, `logger = logging.getLogger(__name__)`.
-      -- If you want to change it to `import my_custom_logger`, ``, `logger = my_custom_logger.get_logger()`,
-      -- you can set `statement_after_imports = {logger = {"import my_custom_logger", "", "logger = my_custom_logger.get_logger()"}}` here.
-      extend_lookup_table = {
-        ---@type string[]
-        import = {
-          -- "tqdm",
-        },
-
-        ---@type table<string, string>
-        import_as = {
-          -- These are the default values. Here for demonstration.
-          -- np = "numpy",
-          -- pd = "pandas",
-        },
-
-        ---@type table<string, string>
-        import_from = {
-          Path = "path",
-          logger = "loguru"
-          -- tqdm = "tqdm",
-        },
-
-        ---@type table<string, string[]>
-        statement_after_imports = {
-          logger = nil,
-        },
-      },
+    "danielfalk/smart-open.nvim",
+    branch = "0.2.x",
+    config = function()
+      require("telescope").load_extension "smart_open"
+    end,
+    dependencies = {
+      "kkharji/sqlite.lua",
+      -- Only required if using match_algorithm fzf
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+      { "nvim-telescope/telescope-fzy-native.nvim" },
     },
   },
 
+  {
+    "gcmt/vessel.nvim",
+    opts = {
+      create_commands = true,
+    },
+    keys = {
+      {
+        "gj",
+        "<Plug>(VesselViewLocalJumps)",
+        "[Go] local [j]umps View",
+      },
+      {
+        "gJ",
+        "<Plug>(VesselViewExternalJumps)",
+        "[Jump] global [J]umps View",
+      },
+      {
+        "gm",
+        "<Plug>(VesselViewMarks)",
+        "[Go] [m]arks",
+      },
+    },
+  },
+  -- # PROGRAMMING LANGUAGES
   -- JSON
   {
     "gennaro-tedesco/nvim-jqx",
-    event = {"BufReadPost"},
+    event = { "BufReadPost" },
     ft = { "json", "yaml" },
   },
 }
