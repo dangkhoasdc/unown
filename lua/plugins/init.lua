@@ -286,4 +286,61 @@ return {
     ---@type gopher.Config
     opts = {},
   },
+  -- Python
+  {
+    "kiyoon/python-import.nvim",
+    -- build = "pipx install . --force",
+    build = "uv tool install . --force --reinstall",
+    lazy=false,
+    ft="python",
+    keys = {
+      {
+        "<leader>i",
+        function()
+          require("python_import.api").add_import_current_word_and_notify()
+        end,
+        mode = { "i", "n" },
+        silent = true,
+        desc = "Add python import",
+        ft = "python",
+      },
+    },
+    opts = {
+      -- Example 1:
+      -- Default behaviour for `tqdm` is `from tqdm.auto import tqdm`.
+      -- If you want to change it to `import tqdm`, you can set `import = {"tqdm"}` and `import_from = {tqdm = nil}` here.
+      -- If you want to change it to `from tqdm import tqdm`, you can set `import_from = {tqdm = "tqdm"}` here.
+
+      -- Example 2:
+      -- Default behaviour for `logger` is `import logging`, ``, `logger = logging.getLogger(__name__)`.
+      -- If you want to change it to `import my_custom_logger`, ``, `logger = my_custom_logger.get_logger()`,
+      -- you can set `statement_after_imports = {logger = {"import my_custom_logger", "", "logger = my_custom_logger.get_logger()"}}` here.
+      extend_lookup_table = {
+        ---@type string[]
+        import = {
+          -- "tqdm",
+        },
+
+        ---@type table<string, string>
+        import_as = {
+          -- These are the default values. Here for demonstration.
+          -- np = "numpy",
+          -- pd = "pandas",
+        },
+
+        ---@type table<string, string[]>
+        statement_after_imports = {
+          logger = nil,
+          ob = nil,
+        },
+
+        ---@type table<string, string>
+        import_from = {
+          -- tqdm = nil,
+          -- tqdm = "tqdm",
+          logger = "loguru",
+        },
+      },
+    },
+  },
 }
