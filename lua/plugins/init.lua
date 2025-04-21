@@ -4,7 +4,6 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
-    lazy = false,
     opts = {
       enabled = function()
         return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
@@ -100,6 +99,7 @@ return {
   -- yanking
   {
     "gbprod/yanky.nvim",
+    lazy = false,
     dependencies = {
       { "kkharji/sqlite.lua" },
     },
