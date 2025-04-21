@@ -1,5 +1,17 @@
 return {
 
+  -- General
+  -- Deal with editing config file
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    lazy = false,
+    opts = {
+      enabled = function()
+        return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
+      end,
+    },
+  },
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
