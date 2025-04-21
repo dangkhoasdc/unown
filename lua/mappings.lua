@@ -39,3 +39,7 @@ end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "gl", "<Plug>(VesselViewLocalJumps)")
 vim.keymap.set("n", "gL", "<Plug>(VesselViewExternalJumps)")
+
+-- replace the current word
+vim.keymap.set({"n", "i"}, "<F4>", ":%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i")
+
