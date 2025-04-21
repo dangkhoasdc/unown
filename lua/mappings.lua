@@ -44,3 +44,15 @@ vim.keymap.set("n", "gL", "<Plug>(VesselViewExternalJumps)")
 -- author: https://stackoverflow.com/a/5543793
 vim.keymap.set({"n", "i"}, "<F4>", ":%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i")
 
+-- yanky
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+vim.keymap.set("n", "<A-p>", "<Plug>(YankyPreviousEntry)")
+vim.keymap.set("n", "<A-n>", "<Plug>(YankyNextEntry)")
+
+vim.keymap.set("n", "<leader>pp", function()
+  require("telescope").extensions.yank_history.yank_history()
+end, { noremap = true, silent = true })

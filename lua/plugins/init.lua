@@ -86,6 +86,17 @@ return {
     },
   },
 
+  -- yanking
+  {
+    "gbprod/yanky.nvim",
+    dependencies = {
+      { "kkharji/sqlite.lua" },
+    },
+    opts = {
+      ring = { storage = "sqlite" },
+    },
+  },
+
   -- Movements
   {
     "ggandor/leap.nvim",
