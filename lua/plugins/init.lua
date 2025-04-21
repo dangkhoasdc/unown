@@ -330,8 +330,7 @@ return {
 
         ---@type table<string, string[]>
         statement_after_imports = {
-          logger = nil,
-          ob = nil,
+          logger = vim.NIL,
         },
 
         ---@type table<string, string>
