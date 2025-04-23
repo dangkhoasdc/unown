@@ -114,16 +114,15 @@ return {
     lazy = false,
     config = function()
       -- Fix: https://github.com/ggandor/leap.nvim/issues/224
-      vim.keymap.set({ "n", "x", "o" }, "ss", "<Plug>(leap-forward)")
-      vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
-      vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
+      vim.keymap.set('n',        'ss', '<Plug>(leap-anywhere)')
+      vim.keymap.set({'x', 'o'}, 'ss', '<Plug>(leap)')
     end,
   },
 
   -- Undo
   {
     "mbbill/undotree",
-    cmd = "UndotreeToggle",
+    cmd = "UndotreeToggle"
   },
 
   -- Comments
