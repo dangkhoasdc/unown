@@ -16,3 +16,11 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 -- line number
 vim.o.number = false
+
+-- cmp setting
+local cmp = require('cmp')
+local config = cmp.get_config()
+table.insert(config.sources, {
+  name = 'copilot',
+})
+cmp.setup(config)

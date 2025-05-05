@@ -108,6 +108,35 @@ return {
     },
   },
 
+  {
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    config = function () require("copilot_cmp").setup() end,
+    dependencies = {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      config = function()
+        require("copilot").setup({
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        })
+      end,
+    },
+  },
+
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "zbirenbaum/copilot-cmp" },
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    cmd = {"CopilotChat", "CopilotChatToggle", "CopilotChatOpen"}
+  },
+
   -- Movements
   {
     "ggandor/leap.nvim",
@@ -217,6 +246,13 @@ return {
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     },
+  },
+
+  {
+    'nvim-telescope/telescope-ui-select.nvim',
+    config = function()
+      require("telescope").load_extension "ui-select"
+    end,
   },
 
   -- save and restore sessions
