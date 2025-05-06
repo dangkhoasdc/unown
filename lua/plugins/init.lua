@@ -107,20 +107,26 @@ return {
       ring = { storage = "sqlite" },
     },
   },
-
+  -- AI coding assistant
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
+  },
   {
     "zbirenbaum/copilot-cmp",
     event = "InsertEnter",
-    config = function () require("copilot_cmp").setup() end,
+    config = function()
+      require("copilot_cmp").setup()
+    end,
     dependencies = {
       "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      config = function()
-        require("copilot").setup({
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        })
-      end,
     },
   },
 
@@ -131,10 +137,7 @@ return {
       { "nvim-lua/plenary.nvim", branch = "master" },
     },
     build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-    },
-    cmd = {"CopilotChat", "CopilotChatToggle", "CopilotChatOpen"}
+    cmd = { "CopilotChat", "CopilotChatToggle", "CopilotChatOpen", "CopilotChatPrompts" },
   },
 
   -- Movements
@@ -143,15 +146,15 @@ return {
     lazy = false,
     config = function()
       -- Fix: https://github.com/ggandor/leap.nvim/issues/224
-      vim.keymap.set('n',        'ss', '<Plug>(leap-anywhere)')
-      vim.keymap.set({'x', 'o'}, 'ss', '<Plug>(leap)')
+      vim.keymap.set("n", "ss", "<Plug>(leap-anywhere)")
+      vim.keymap.set({ "x", "o" }, "ss", "<Plug>(leap)")
     end,
   },
 
   -- Undo
   {
     "mbbill/undotree",
-    cmd = "UndotreeToggle"
+    cmd = "UndotreeToggle",
   },
 
   -- Comments
@@ -249,7 +252,7 @@ return {
   },
 
   {
-    'nvim-telescope/telescope-ui-select.nvim',
+    "nvim-telescope/telescope-ui-select.nvim",
     config = function()
       require("telescope").load_extension "ui-select"
     end,
