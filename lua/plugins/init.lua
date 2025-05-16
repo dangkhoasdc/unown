@@ -131,13 +131,19 @@ return {
   },
 
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
+    "olimorris/codecompanion.nvim",
+    lazy=false,
     dependencies = {
-      { "zbirenbaum/copilot-cmp" },
-      { "nvim-lua/plenary.nvim", branch = "master" },
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    cmd = { "CopilotChat", "CopilotChatToggle", "CopilotChatOpen", "CopilotChatPrompts" },
+    opts = {
+      strategies = {
+        chat = {
+          adapter = "copilot",
+        },
+      },
+    },
   },
 
   -- Movements
@@ -265,7 +271,7 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
-    cmd = {"Octo"},
+    cmd = { "Octo" },
     config = function()
       require("octo").setup()
     end,
