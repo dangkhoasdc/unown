@@ -132,7 +132,7 @@ return {
 
   {
     "olimorris/codecompanion.nvim",
-    lazy=false,
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -192,7 +192,13 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
-    opts = {},
+    opts = {
+      modes = {
+        search = {
+          enabled = true,
+        },
+      },
+    },
     -- stylua: ignore
     keys = {
       { "<leader>sS", mode = { "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
