@@ -323,28 +323,22 @@ return {
     },
   },
 
+  -- jumps & marks management
   {
     "gcmt/vessel.nvim",
     opts = {
       create_commands = true,
     },
     keys = {
-      {
-        "gj",
-        "<Plug>(VesselViewLocalJumps)",
-        "[Go] local [j]umps View",
-      },
-      {
-        "gJ",
-        "<Plug>(VesselViewExternalJumps)",
-        "[Jump] global [J]umps View",
-      },
-      {
-        "gm",
-        "<Plug>(VesselViewMarks)",
-        "[Go] [m]arks",
-      },
+      { "gj", "<Plug>(VesselViewLocalJumps)", desc = "View local jumps" },
+      { "gJ", "<Plug>(VesselViewExternalJumps)", desc = "View external jumps" },
+      { "gm", "<Plug>(VesselViewMarks)", desc = "View marks" },
     },
+  },
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
   -- # PROGRAMMING LANGUAGES
   -- JSON
