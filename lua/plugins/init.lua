@@ -280,6 +280,12 @@ return {
           enabled = false,
         },
       },
+      routes = {
+        {
+          view = "notify",
+          filter = { event = "msg_showmode" },
+        },
+      },
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -391,7 +397,7 @@ return {
     build = function()
       vim.cmd.GoInstallDeps()
     end,
-    
+
     ---@type gopher.Config
     opts = {},
   },
