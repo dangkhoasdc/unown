@@ -337,7 +337,14 @@ return {
   },
 
   -- mini
-  { "echasnovski/mini.ai", version = false, lazy = false },
+  {
+    "echasnovski/mini.ai",
+    version = false,
+    lazy = false,
+    config = function()
+      require("mini.ai").setup()
+    end,
+  },
   {
     "echasnovski/mini.surround",
     version = false,
