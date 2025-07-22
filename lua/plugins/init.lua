@@ -344,6 +344,7 @@ return {
   },
 
   -- mini
+  -- -- a/i operators
   {
     "echasnovski/mini.ai",
     version = false,
@@ -352,6 +353,7 @@ return {
       require("mini.ai").setup()
     end,
   },
+  -- -- surround
   {
     "echasnovski/mini.surround",
     version = false,
@@ -360,8 +362,18 @@ return {
       require("mini.surround").setup()
     end,
   },
+  -- -- trailspace
+  {
+    "echasnovski/mini.trailspace",
+    version = "*",
+    lazy = false,
+    config = function()
+      require("mini.trailspace").setup()
+    end,
+  },
 
   -- navigations
+  -- -- smart open
   {
     "danielfalk/smart-open.nvim",
     branch = "0.2.x",
@@ -377,7 +389,7 @@ return {
     },
   },
 
-  -- jumps & marks management
+  -- -- jumps & marks management
   {
     "gcmt/vessel.nvim",
     opts = {
@@ -394,14 +406,14 @@ return {
     event = "VeryLazy",
     opts = {},
   },
-  -- # PROGRAMMING LANGUAGES
-  -- JSON
+  -- PROGRAMMING LANGUAGES
+  -- -- json
   {
     "gennaro-tedesco/nvim-jqx",
     event = { "BufReadPost" },
     ft = { "json", "yaml" },
   },
-  -- Golang
+  -- -- go
   {
     "olexsmir/gopher.nvim",
     ft = "go",
@@ -415,7 +427,7 @@ return {
     ---@type gopher.Config
     opts = {},
   },
-  -- Python
+  -- -- python
   {
     "kiyoon/python-import.nvim",
     -- build = "pipx install . --force",
