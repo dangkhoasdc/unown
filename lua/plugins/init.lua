@@ -229,13 +229,9 @@ return {
     opts = {
       modes = {
         search = {
-          enabled = true,
+          enabled = false,
         },
       },
-    },
-    -- stylua: ignore
-    keys = {
-      { "<leader>sS", mode = { "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
 
