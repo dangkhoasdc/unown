@@ -3,11 +3,27 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
--- EXAMPLE
-local servers = { "pylsp", "lua_ls", "gopls", "dockerls", "julials", "ruff" }
-local nvlsp = require "nvchad.configs.lspconfig"
+-- Global setting
+-- -- Foldng
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+
+local language_servers = vim.lsp.get_clients() -- or list servers manually like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+  require("lspconfig")[ls].setup {
+    capabilities = capabilities,
+    -- you can add other fields for setting up lsp server in this table
+  }
+end
+
+require("ufo").setup()
 
 -- lsps with default config
+local servers = { "pylsp", "lua_ls", "gopls", "dockerls", "julials", "ruff" }
+local nvlsp = require "nvchad.configs.lspconfig"
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = nvlsp.on_attach,
@@ -16,16 +32,15 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring single server, example: typescript
 lspconfig.gopls.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   settings = {
     gopls = {
-      gofumpt = false
-    }
-  }
+      gofumpt = false,
+    },
+  },
 }
 
 lspconfig.pylsp.setup {
@@ -33,9 +48,9 @@ lspconfig.pylsp.setup {
     pylsp = {
       plugins = {
         pyflakes = {
-          enabled = false
-        }
-      }
-    }
-  }
+          enabled = false,
+        },
+      },
+    },
+  },
 }
