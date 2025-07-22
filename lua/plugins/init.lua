@@ -331,6 +331,7 @@ return {
   -- window management
   {
     "mrjones2014/smart-splits.nvim",
+    lazy = false,
     opts = {
       default_amount = 10,
     },
