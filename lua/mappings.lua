@@ -4,6 +4,7 @@ local map = vim.keymap.set
 local builtin = require "telescope.builtin"
 
 -- General
+vim.g.maplocalleader = ","
 map("i", "jk", "<ESC>")
 
 -- Undotree
