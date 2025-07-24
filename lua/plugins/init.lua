@@ -190,6 +190,38 @@ return {
     event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
     priority = 1000,
   },
+  -- select by on treesitter
+  {
+    "mfussenegger/nvim-treehopper",
+    init = function()
+      local keymap = vim.api.nvim_set_keymap
+      keymap("n", "g<CR>", '<cmd>lua require("tsht").nodes()<CR>o<ESC>', {
+        callback = function()
+          require("tsht").nodes()
+          -- in visual mode type `o` jumps to the other side of selection.
+          -- And then type v to exit visual mode
+          vim.cmd "normal! ov"
+        end,
+        desc = "jump to treesitter node start",
+      })
+      keymap("n", "g<BS>", "", {
+        callback = function()
+          require("tsht").nodes()
+          vim.cmd "normal! v"
+        end,
+        desc = "jump to treesitter node end",
+      })
+      keymap("v", "<CR>", ':<C-U>lua require("tsht").nodes()<CR>', {
+        desc = "treesitter nodes",
+      })
+      keymap("o", "<CR>", "", {
+        callback = function()
+          require("tsht").nodes()
+        end,
+        desc = "treesitter nodes",
+      })
+    end,
+  },
 
   -- Undo
   {
