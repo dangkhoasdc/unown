@@ -157,6 +157,13 @@ return {
     end,
   },
   {
+    "ggandor/flit.nvim",
+    lazy = false,
+    config = function()
+      require("flit").setup {}
+    end,
+  },
+  {
     "abecodes/tabout.nvim",
     lazy = false,
     config = function()
@@ -257,20 +264,6 @@ return {
         },
       }
     end,
-  },
-
-  -- better search
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {
-      modes = {
-        search = {
-          enabled = true,
-        },
-      },
-    },
   },
 
   -- code outline
