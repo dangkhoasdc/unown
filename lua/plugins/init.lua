@@ -227,6 +227,13 @@ return {
     end,
   },
 
+  -- import folding - since ufo cannot handle Python
+  {
+    "dmtrKovalenko/fold-imports.nvim",
+    opts = {},
+    event = "BufRead",
+  },
+
   -- better search
   {
     "folke/flash.nvim",
