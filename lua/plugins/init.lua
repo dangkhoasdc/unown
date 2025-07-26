@@ -304,6 +304,18 @@ return {
     },
   },
 
+  -- editing
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "<space>j", "<cmd>TSJToggle<cr>", desc = "Toggle treesj" },
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesj").setup {}
+    end,
+  },
+
   -- UI
   {
     "folke/noice.nvim",
