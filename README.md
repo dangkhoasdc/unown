@@ -1,9 +1,126 @@
+# unown
+
+<a href="https://dotfyle.com/dangkhoasdc/unown"><img src="https://dotfyle.com/dangkhoasdc/unown/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/dangkhoasdc/unown"><img src="https://dotfyle.com/dangkhoasdc/unown/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/dangkhoasdc/unown"><img src="https://dotfyle.com/dangkhoasdc/unown/badges/plugin-manager?style=flat" /></a>
+
 **This repo is supposed to used as config by NvChad users!**
 
 - The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
-- So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
 
-# Credits
+## Install Instructions
 
-1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
+ > Install requires Neovim 0.9+. Always review the code before installing a configuration.
+
+Clone the repository and install the plugins:
+
+```sh
+git clone git@github.com:dangkhoasdc/unown ~/.config/dangkhoasdc/unown
+```
+
+Open Neovim with this config:
+
+```sh
+NVIM_APPNAME=dangkhoasdc/unown/ nvim
+```
+
+## Plugins
+
+### ai
+
++ [olimorris/codecompanion.nvim](https://dotfyle.com/plugins/olimorris/codecompanion.nvim)
+### comment
+
++ [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
++ [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
+### completion
+
++ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
++ [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
+### diagnostics
+
++ [folke/trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
+### editing-support
+
++ [gbprod/yanky.nvim](https://dotfyle.com/plugins/gbprod/yanky.nvim)
++ [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
++ [echasnovski/mini.trailspace](https://dotfyle.com/plugins/echasnovski/mini.trailspace)
+### file-explorer
+
++ [nvim-tree/nvim-tree.lua](https://dotfyle.com/plugins/nvim-tree/nvim-tree.lua)
+### formatting
+
++ [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
+### fuzzy-finder
+
++ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
++ [danielfalk/smart-open.nvim](https://dotfyle.com/plugins/danielfalk/smart-open.nvim)
+### github
+
++ [pwntester/octo.nvim](https://dotfyle.com/plugins/pwntester/octo.nvim)
+### golang
+
++ [olexsmir/gopher.nvim](https://dotfyle.com/plugins/olexsmir/gopher.nvim)
+### icon
+
++ [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
+### lsp
+
++ [stevearc/aerial.nvim](https://dotfyle.com/plugins/stevearc/aerial.nvim)
++ [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
++ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
+### marks
+
++ [chentoast/marks.nvim](https://dotfyle.com/plugins/chentoast/marks.nvim)
+### motion
+
++ [ggandor/flit.nvim](https://dotfyle.com/plugins/ggandor/flit.nvim)
++ [ggandor/leap.nvim](https://dotfyle.com/plugins/ggandor/leap.nvim)
++ [abecodes/tabout.nvim](https://dotfyle.com/plugins/abecodes/tabout.nvim)
+### nvim-dev
+
++ [folke/lazydev.nvim](https://dotfyle.com/plugins/folke/lazydev.nvim)
++ [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
++ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
++ [kkharji/sqlite.lua](https://dotfyle.com/plugins/kkharji/sqlite.lua)
+### plugin-manager
+
++ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
+### programming-languages-support
+
++ [gennaro-tedesco/nvim-jqx](https://dotfyle.com/plugins/gennaro-tedesco/nvim-jqx)
++ [kiyoon/python-import.nvim](https://dotfyle.com/plugins/kiyoon/python-import.nvim)
+### session
+
++ [rmagatti/auto-session](https://dotfyle.com/plugins/rmagatti/auto-session)
+### snippet
+
++ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
++ [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
+### split-and-window
+
++ [mrjones2014/smart-splits.nvim](https://dotfyle.com/plugins/mrjones2014/smart-splits.nvim)
+### syntax
+
++ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
++ [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
+### tree-sitter-based
+
++ [mfussenegger/nvim-treehopper](https://dotfyle.com/plugins/mfussenegger/nvim-treehopper)
+### utility
+
++ [kevinhwang91/nvim-ufo](https://dotfyle.com/plugins/kevinhwang91/nvim-ufo)
++ [NvChad/ui](https://dotfyle.com/plugins/NvChad/ui)
++ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
++ [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
+## Language Servers
+
++ clangd
++ dockerls
++ gopls
++ julials
++ lua_ls
++ pylsp
+
+
+ This readme was generated by [Dotfyle](https://dotfyle.com)
