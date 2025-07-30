@@ -1,10 +1,8 @@
 require "nvchad.mappings"
 
 local map = vim.keymap.set
-local builtin = require "telescope.builtin"
 
 -- General
-vim.g.maplocalleader = ","
 map("i", "jk", "<ESC>")
 
 -- Undotree
@@ -14,6 +12,7 @@ map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree" })
 map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
 
 -- Telescope
+local builtin = require "telescope.builtin"
 vim.keymap.set("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
 
 -- remapp terms, otherwise it conflicts which resizing panes/windows
@@ -31,16 +30,16 @@ map({ "n", "t" }, "<leader>h", function()
 end, { desc = "terminal toggleable horizontal term" })
 
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
-vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
-vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
-vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
 -- moving between splits
-vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
-vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
-vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
-vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
-vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 
 vim.keymap.set("n", "<leader><leader>", function()
   require("telescope").extensions.smart_open.smart_open()
