@@ -481,6 +481,9 @@ return {
 
     ---@type gopher.Config
     opts = {},
+    keys = {
+      { "<localleader>e", ":GoIfErr<cr>", "Generate If Eerr" },
+    },
   },
   -- -- python
   {
