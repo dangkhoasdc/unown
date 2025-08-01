@@ -316,6 +316,22 @@ return {
     end,
   },
 
+  {
+    "rgroli/other.nvim",
+    config = function()
+      require("other-nvim").setup {
+        mappings = {
+          "golang",
+          "python",
+        },
+      }
+    end,
+    keys = {
+      { "<leader>oo", "<cmd>:Other<CR>", "[o]pen [o]ther file" },
+      { "<leader>ov", "<cmd>:OtherVSplit<CR>", "[o]pen Other [v]split file" },
+    },
+  },
+
   -- UI
   {
     "folke/noice.nvim",
@@ -437,10 +453,7 @@ return {
     end,
     dependencies = {
       "kkharji/sqlite.lua",
-      -- Only required if using match_algorithm fzf
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
-      { "nvim-telescope/telescope-fzy-native.nvim" },
+      "nvim-telescope/telescope-fzy-native.nvim",
     },
   },
 
