@@ -10,6 +10,7 @@ return {
       end,
     },
   },
+  -- nvim-tree. Need this for customized UI.
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
@@ -20,11 +21,7 @@ return {
       require "configs.nvtree"
     end,
   },
-  {
-    "stevearc/conform.nvim",
-    opts = require "configs.conform",
-  },
-
+  -- lspconfig
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -32,7 +29,12 @@ return {
       require "configs.lspconfig"
     end,
   },
-
+  -- formatters
+  {
+    "stevearc/conform.nvim",
+    opts = require "configs.conform",
+  },
+  -- linters
   {
     "mfussenegger/nvim-lint",
     lazy = false,
@@ -50,9 +52,12 @@ return {
       })
     end,
   },
-
+  -- tresitter
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = 'master',
+    build = ":TSUpdate",
     opts = {
       ensure_installed = {
         "python",
@@ -61,7 +66,7 @@ return {
       },
     },
   },
-
+  -- show code context on top of the buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPost",
@@ -71,17 +76,7 @@ return {
     end,
   },
 
-  {
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-    build = "make install_jsregexp",
-  },
-
+  -- Organize errors, warnings, references.
   {
     "folke/trouble.nvim",
     opts = {
@@ -103,6 +98,17 @@ return {
         desc = "LSP Definitions / references / ... (Trouble)",
       },
     },
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+    build = "make install_jsregexp",
   },
 
   -- yanking
@@ -238,6 +244,56 @@ return {
       })
     end,
   },
+  -- a/i operators
+  {
+    "echasnovski/mini.ai",
+    version = false,
+    lazy = false,
+    config = function()
+      require("mini.ai").setup()
+    end,
+  },
+
+  -- surround
+  {
+    "echasnovski/mini.surround",
+    version = false,
+    lazy = false,
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
+
+  -- -- smart open
+  {
+    "danielfalk/smart-open.nvim",
+    branch = "0.2.x",
+    config = function()
+      require("telescope").load_extension "smart_open"
+    end,
+    dependencies = {
+      "kkharji/sqlite.lua",
+      "nvim-telescope/telescope-fzy-native.nvim",
+    },
+  },
+
+  -- -- jumps & marks management
+  {
+    "gcmt/vessel.nvim",
+    opts = {
+      create_commands = true,
+    },
+    keys = {
+      { "gj", "<Plug>(VesselViewLocalJumps)", desc = "View local jumps" },
+      { "gJ", "<Plug>(VesselViewExternalJumps)", desc = "View external jumps" },
+      { "gm", "<Plug>(VesselViewMarks)", desc = "View marks" },
+    },
+  },
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 
   -- Undo
   {
@@ -316,6 +372,7 @@ return {
     end,
   },
 
+  -- open other file
   {
     "rgroli/other.nvim",
     config = function()
@@ -347,7 +404,7 @@ return {
           enabled = true,
         },
         signature = {
-          enabled = true,
+          enabled = false,
         },
       },
       presets = {
@@ -381,6 +438,17 @@ return {
     end,
   },
 
+  -- trailspace
+  {
+    "echasnovski/mini.trailspace",
+    version = "*",
+    lazy = false,
+    config = function()
+      require("mini.trailspace").setup()
+    end,
+  },
+
+  -- Misc
   {
     "pwntester/octo.nvim",
     dependencies = {
@@ -406,6 +474,7 @@ return {
   },
 
   -- window management
+  -- move between nvim & tmix, resize windows/panes ...
   {
     "mrjones2014/smart-splits.nvim",
     lazy = false,
@@ -414,66 +483,7 @@ return {
     },
   },
 
-  -- mini
-  -- -- a/i operators
-  {
-    "echasnovski/mini.ai",
-    version = false,
-    lazy = false,
-    config = function()
-      require("mini.ai").setup()
-    end,
-  },
-  -- -- surround
-  {
-    "echasnovski/mini.surround",
-    version = false,
-    lazy = false,
-    config = function()
-      require("mini.surround").setup()
-    end,
-  },
-  -- -- trailspace
-  {
-    "echasnovski/mini.trailspace",
-    version = "*",
-    lazy = false,
-    config = function()
-      require("mini.trailspace").setup()
-    end,
-  },
 
-  -- navigations
-  -- -- smart open
-  {
-    "danielfalk/smart-open.nvim",
-    branch = "0.2.x",
-    config = function()
-      require("telescope").load_extension "smart_open"
-    end,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      "nvim-telescope/telescope-fzy-native.nvim",
-    },
-  },
-
-  -- -- jumps & marks management
-  {
-    "gcmt/vessel.nvim",
-    opts = {
-      create_commands = true,
-    },
-    keys = {
-      { "gj", "<Plug>(VesselViewLocalJumps)", desc = "View local jumps" },
-      { "gJ", "<Plug>(VesselViewExternalJumps)", desc = "View external jumps" },
-      { "gm", "<Plug>(VesselViewMarks)", desc = "View marks" },
-    },
-  },
-  {
-    "chentoast/marks.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
   -- PROGRAMMING LANGUAGES
   -- -- json
   {
@@ -496,39 +506,6 @@ return {
     opts = {},
     keys = {
       { "<localleader>e", ":GoIfErr<cr>", "Generate If Eerr" },
-    },
-  },
-  -- -- python
-  {
-    "kiyoon/python-import.nvim",
-    -- build = "pipx install . --force",
-    build = "uv tool install . --force --reinstall",
-    lazy = false,
-    ft = "python",
-    keys = {
-      {
-        "<leader>i",
-        function()
-          require("python_import.api").add_import_current_word_and_notify()
-        end,
-        mode = { "n" },
-        silent = true,
-        desc = "Add python import",
-        ft = "python",
-      },
-    },
-    opts = {
-      extend_lookup_table = {
-        ---@type table<string, string[]>
-        statement_after_imports = {
-          logger = vim.NIL,
-        },
-
-        ---@type table<string, string>
-        import_from = {
-          logger = "loguru",
-        },
-      },
     },
   },
 }
