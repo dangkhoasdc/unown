@@ -19,8 +19,9 @@ end
 
 table.insert(config.sources, {
   name = "copilot",
+  group_index = 1,
 })
-config.mapping = cmp.mapping.preset.insert ({
+config.mapping = cmp.mapping.preset.insert {
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() and has_words_before() then
       cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
@@ -30,11 +31,11 @@ config.mapping = cmp.mapping.preset.insert ({
   end, { "i", "s" }),
   ["<S-Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
-     cmp.select_prev_item()
+      cmp.select_prev_item()
     else
       fallback()
     end
-   end, { "i", "s" }),
-})
+  end, { "i", "s" }),
+}
 
 cmp.setup(config)
