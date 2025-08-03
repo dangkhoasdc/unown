@@ -478,6 +478,11 @@ return {
     end,
   },
 
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = { "qf" },
+  },
+
   -- Misc
   {
     "pwntester/octo.nvim",
