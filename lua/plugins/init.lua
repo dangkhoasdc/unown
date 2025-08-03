@@ -414,8 +414,8 @@ return {
       }
     end,
     keys = {
-      { "<leader>oo", "<cmd>:Other<CR>", "[o]pen [o]ther file" },
-      { "<leader>ov", "<cmd>:OtherVSplit<CR>", "[o]pen Other [v]split file" },
+      { "<leader>oo", "<cmd>:Other<CR>", desc = "[o]pen [o]ther file" },
+      { "<leader>ov", "<cmd>:OtherVSplit<CR>", desc = "[o]pen Other [v]split file" },
     },
   },
 
@@ -534,7 +534,7 @@ return {
     ---@type gopher.Config
     opts = {},
     keys = {
-      { "<localleader>e", ":GoIfErr<cr>", "Generate If Eerr" },
+      { "<localleader>e", ":GoIfErr<cr>", desc = "Generate If Eerr" },
     },
   },
 }
