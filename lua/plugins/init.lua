@@ -151,13 +151,22 @@ return {
         panel = { enabled = false },
         filetypes = {
           markdown = true,
+          lua = true,
+        },
+        server_opts_overrides = {
+          settings = {
+            advanced = {
+              listCount = 10,
+              inlineSuggestCount = 3,
+            },
+          },
         },
       }
     end,
   },
   {
     "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "LspAttach" },
     config = function()
       require("copilot_cmp").setup()
     end,
