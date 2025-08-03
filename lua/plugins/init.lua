@@ -89,20 +89,31 @@ return {
     opts = {
       preview = {
         type = "float",
+        relative = "editor",
+        border = "rounded",
+        title = "Preview",
+        title_pos = "center",
+        position = { 0, -2 },
+        size = { width = 0.3, height = 0.3 },
+        zindex = 200,
       },
     }, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
-    lazy = false,
     keys = {
       {
-        "<leader>tt",
+        "<leader>tD",
         "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
+        desc = " [t]rouble [D]iagnostics",
       },
       {
-        "<leader>tl",
-        "<cmd>Trouble lsp toggle focus=true  win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
+        "<leader>tr",
+        "<cmd>Trouble lsp toggle focus=true<cr>",
+        desc = "[t]rouble LSP Definitions / [r]eferences / ... ",
+      },
+      {
+        "<leader>tt",
+        "<cmd>Trouble telescope toggle<cr>",
+        desc = " [t]rouble [t]elescope",
       },
     },
   },
