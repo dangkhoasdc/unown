@@ -29,6 +29,13 @@ return {
       require "configs.lspconfig"
     end,
   },
+  "mason-org/mason-lspconfig.nvim",
+  lazy = false,
+  opts = {},
+  dependencies = {
+    { "mason-org/mason.nvim", opts = {} },
+    "neovim/nvim-lspconfig",
+  },
   -- formatters
   {
     "stevearc/conform.nvim",
@@ -56,7 +63,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    branch = 'master',
+    branch = "master",
     build = ":TSUpdate",
     opts = {
       ensure_installed = {
@@ -131,6 +138,9 @@ return {
       require("copilot").setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
+        filetypes = {
+          markdown = true,
+        },
       }
     end,
   },
@@ -482,7 +492,6 @@ return {
       default_amount = 10,
     },
   },
-
 
   -- PROGRAMMING LANGUAGES
   -- -- json
