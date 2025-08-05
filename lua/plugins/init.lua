@@ -310,7 +310,16 @@ return {
     event = "VeryLazy",
     opts = {},
   },
-
+  {
+    "max397574/better-escape.nvim",
+    lazy = false,
+    config = function()
+      require("better_escape").setup {
+        timeout = vim.o.timeoutlen,
+        default_mappings = true,
+      }
+    end,
+  },
   -- Undo
   {
     "mbbill/undotree",

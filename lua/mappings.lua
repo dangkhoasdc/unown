@@ -3,7 +3,6 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 -- General
-map("i", "jk", "<ESC>")
 
 -- Undotree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree" })
