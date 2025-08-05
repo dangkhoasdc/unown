@@ -59,20 +59,6 @@ return {
       })
     end,
   },
-  -- tresitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    branch = "master",
-    build = ":TSUpdate",
-    opts = {
-      ensure_installed = {
-        "python",
-        "go",
-        "diff",
-      },
-    },
-  },
   -- show code context on top of the buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
