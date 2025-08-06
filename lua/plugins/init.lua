@@ -389,11 +389,18 @@ return {
   {
     "Wansmer/treesj",
     keys = {
-      { "<space>j", "<cmd>TSJToggle<cr>", desc = "Toggle treesj" },
+      {
+        "<leader>j",
+        "<cmd>TSJToggle<cr>",
+        desc = "Toggle joining block",
+        noremap = true,
+      },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require("treesj").setup {}
+      require("treesj").setup {
+        use_default_keymaps = false,
+      }
     end,
   },
 
