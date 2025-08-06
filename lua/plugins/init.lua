@@ -59,6 +59,14 @@ return {
       })
     end,
   },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+    },
+    event = "LspAttach",
+    opts = {},
+  },
   -- show code context on top of the buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -422,6 +430,7 @@ return {
   },
 
   -- UI
+  -- Notification UI
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -454,7 +463,6 @@ return {
       },
     },
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
@@ -488,6 +496,7 @@ return {
     end,
   },
 
+  -- better Quickfix
   {
     "kevinhwang91/nvim-bqf",
     ft = { "qf" },

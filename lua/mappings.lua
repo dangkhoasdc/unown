@@ -60,3 +60,7 @@ vim.keymap.set("n", "<A-n>", "<Plug>(YankyNextEntry)")
 vim.keymap.set("n", "<leader>pp", function()
   require("telescope").extensions.yank_history.yank_history()
 end, { noremap = true, silent = true })
+
+vim.keymap.set({ "n", "x" }, "gra", function()
+  require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
