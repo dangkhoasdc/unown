@@ -50,6 +50,9 @@ lspconfig.pylsp.setup {
         pyflakes = {
           enabled = false,
         },
+        pycodestyle = {
+          enabled = false,
+        },
       },
     },
   },
