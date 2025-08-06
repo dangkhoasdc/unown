@@ -493,6 +493,16 @@ return {
     ft = { "qf" },
   },
 
+  -- lightbulb
+  {
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("nvim-lightbulb").setup {
+        autocmd = { enabled = true },
+      }
+    end,
+  },
+
   -- Misc
   {
     "pwntester/octo.nvim",
