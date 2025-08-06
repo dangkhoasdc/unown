@@ -31,11 +31,15 @@ return {
   },
   "mason-org/mason-lspconfig.nvim",
   lazy = false,
-  opts = {},
-  dependencies = {
-    { "mason-org/mason.nvim", opts = {} },
-    "neovim/nvim-lspconfig",
+  opts = {
+    ensure_installed = {
+      "ruff",
+      "pylsp",
+      "gopls",
+      "jsonls",
+    },
   },
+  dependencies = { { "mason-org/mason.nvim", opts = {} }, "neovim/nvim-lspconfig" },
   -- formatters
   {
     "stevearc/conform.nvim",
