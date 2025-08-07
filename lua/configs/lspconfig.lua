@@ -22,7 +22,7 @@ end
 require("ufo").setup()
 
 -- lsps with default config
-local servers = { "pylsp", "gopls", "dockerls", "julials", "ruff", "jsonls" }
+local servers = { "pylsp", "gopls", "dockerls", "julials", "ruff", "jsonls", "groovyls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -56,4 +56,9 @@ lspconfig.pylsp.setup {
       },
     },
   },
+}
+
+lspconfig.groovyls.setup {
+  cmd = { "groovy-language-server" },
+  filetypes = { "groovy" },
 }

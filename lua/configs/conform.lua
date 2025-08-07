@@ -4,7 +4,8 @@ local options = {
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     go = { "gofmt" },
     markdown = {"markdownlint-cli2"},
-    json = {"fixjson"}
+    json = {"fixjson"},
+    groovy = {"npm-groovy-lint"},
   },
 }
 
