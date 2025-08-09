@@ -52,7 +52,8 @@ return {
     config = function()
       require("lint").linters_by_ft = {
         make = { "checkmake" },
-        groovy = {"npm-groovy-lint" },
+        groovy = { "npm-groovy-lint" },
+        yaml = { "yamllint" },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
