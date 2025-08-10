@@ -574,6 +574,13 @@ return {
     },
   },
 
+  -- auto close buffers when inactive
+  {
+    "chrisgrieser/nvim-early-retirement",
+    config = true,
+    event = "VeryLazy",
+  },
+
   -- PROGRAMMING LANGUAGES
   -- -- json
   {
