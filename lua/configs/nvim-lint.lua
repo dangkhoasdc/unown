@@ -2,6 +2,9 @@ require("lint").linters_by_ft = {
   make = { "checkmake" },
   groovy = { "npm-groovy-lint" },
   yaml = { "yamllint" },
+  sh = { "shellcheck" },
+  bash = { "shellcheck" },
+  zsh = { "shellcheck" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
