@@ -3,7 +3,6 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 -- General
-
 -- Undotree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree" })
 
@@ -12,7 +11,7 @@ map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
 
 -- Telescope
 local builtin = require "telescope.builtin"
-vim.keymap.set("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
+map("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
 
 -- remapp terms, otherwise it conflicts which resizing panes/windows
 
@@ -29,38 +28,58 @@ map({ "n", "t" }, "<leader>h", function()
 end, { desc = "terminal toggleable horizontal term" })
 
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+map("n", "<A-h>", require("smart-splits").resize_left)
+map("n", "<A-j>", require("smart-splits").resize_down)
+map("n", "<A-k>", require("smart-splits").resize_up)
+map("n", "<A-l>", require("smart-splits").resize_right)
 -- moving between splits
-vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
-vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
+map("n", "<C-h>", require("smart-splits").move_cursor_left)
+map("n", "<C-j>", require("smart-splits").move_cursor_down)
+map("n", "<C-k>", require("smart-splits").move_cursor_up)
+map("n", "<C-l>", require("smart-splits").move_cursor_right)
+map("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 
-vim.keymap.set("n", "<leader><leader>", function()
+map("n", "<leader><leader>", function()
   require("telescope").extensions.smart_open.smart_open()
-end, { noremap = true, silent = true })
+end, { desc = "Smart Open", noremap = true, silent = true })
 
 -- replace the current word
 -- author: https://stackoverflow.com/a/5543793
-vim.keymap.set({ "n", "i" }, "<F4>", ":%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i")
+map({ "n", "i" }, "<F4>", ":%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i", { desc = "Replace current word" })
 
 -- yanky
-vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
-vim.keymap.set("n", "<A-p>", "<Plug>(YankyPreviousEntry)")
-vim.keymap.set("n", "<A-n>", "<Plug>(YankyNextEntry)")
+map("n", "<A-p>", "<Plug>(YankyPreviousEntry)", { desc = "Prev Yanky Entry" })
+map("n", "<A-n>", "<Plug>(YankyNextEntry)", { desc = "Next Yanky Entry" })
 
-vim.keymap.set("n", "<leader>pp", function()
+map("n", "<leader>pp", function()
   require("telescope").extensions.yank_history.yank_history()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Telescope Yank History" })
 
-vim.keymap.set({ "n", "x" }, "gra", function()
+map({ "n", "x" }, "gra", function()
   require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Open Code Action" })
+
+-- CodeCompanions
+map(
+  { "n", "v" },
+  "<localleader>ca",
+  "<cmd>CodeCompanionActions<cr>",
+  { desc = "Code[c]ompanion [a]ctions", noremap = true, silent = true }
+)
+map(
+  { "n", "v" },
+  "<localleader>cc",
+  "<cmd>CodeCompanionChat Toggle<cr>",
+  { desc = "Code[c]companion [c]hat", noremap = true, silent = true }
+)
+map(
+  "v",
+  "<localleader>cA",
+  "<cmd>CodeCompanionChat Add<cr>",
+  { desc = "Code[c]ompanion [c]hat add", noremap = true, silent = true }
+)
