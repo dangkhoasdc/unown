@@ -468,6 +468,11 @@ return {
           view = "notify",
           filter = { event = "msg_showmode" },
         },
+        {
+          view = "cmdline",
+          filter = { event = "msg_showmode", any = { { find = "recording" } } },
+          opts = { format = { { "󰑊", hl_group = "MacroRecordingIcon" }, " ", "{message}" } },
+        },
       },
     },
     dependencies = {

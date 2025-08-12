@@ -12,6 +12,9 @@ M.ui = {
   telescope = {
     style = "bordered",
   },
+  tabufline = {
+    enabled = false,
+  }
 }
 
 return M
