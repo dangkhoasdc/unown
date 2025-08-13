@@ -17,6 +17,7 @@ map("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
 
 vim.keymap.del("n", "<A-h>")
 vim.keymap.del("n", "<A-v>")
+vim.keymap.del("n", "<leader>cm")
 
 -- toggleable
 map({ "n", "t" }, "<leader>v", function()
