@@ -6,7 +6,8 @@ local options = {
     markdown = { "markdownlint-cli2" },
     json = { "fixjson" },
     groovy = { "npm-groovy-lint" },
-    yaml = { "yamlfmt"}
+    yaml = { "yamlfmt" },
+    rust = { "rustfmt" },
   },
   default_format_opts = {
     timeout_ms = 5000,
