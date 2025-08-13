@@ -40,7 +40,7 @@ vim.filetype.add {
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNewFile' }, {
   pattern = '.env*',
-  command = 'set filetype=dotenv',
+  command = 'set filetype=dotenv | set syntax=bash',
 })
 -- plugin config
 require "configs.cmp"
