@@ -61,6 +61,11 @@ return {
     event = "LspAttach",
     opts = {},
   },
+  {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+  },
   -- show code context on top of the buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
