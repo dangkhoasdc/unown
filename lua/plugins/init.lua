@@ -72,7 +72,9 @@ return {
     event = "BufReadPost",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require("treesitter-context").setup()
+      require("treesitter-context").setup {
+        multiline_threshold = 5,
+      }
     end,
   },
 
@@ -307,20 +309,24 @@ return {
 
   -- -- jumps & marks management
   {
-    "gcmt/vessel.nvim",
-    opts = {
-      create_commands = true,
-    },
-    keys = {
-      { "gj", "<Plug>(VesselViewLocalJumps)", desc = "View local jumps" },
-      { "gJ", "<Plug>(VesselViewExternalJumps)", desc = "View external jumps" },
-      { "gm", "<Plug>(VesselViewMarks)", desc = "View marks" },
-    },
-  },
-  {
     "chentoast/marks.nvim",
     event = "VeryLazy",
     opts = {},
+    keys = {
+      { "<localleader>M", "<cmd>BookmarksQFListAll<cr>", desc = "Toggle bookmarks" },
+    },
+  },
+  {
+    "otavioschwanck/arrow.nvim",
+    lazy = false,
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    opts = {
+      show_icons = true,
+      leader_key = ";", -- Recommended to be a single key
+      buffer_leader_key = "m", -- Per Buffer Mappings
+    },
   },
   {
     "max397574/better-escape.nvim",
