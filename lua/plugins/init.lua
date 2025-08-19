@@ -66,6 +66,13 @@ return {
     dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
   },
+  {
+    "zbirenbaum/neodim",
+    event = "LspAttach",
+    config = function()
+      require("neodim").setup()
+    end,
+  },
   -- show code context on top of the buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -76,6 +83,9 @@ return {
         multiline_threshold = 5,
       }
     end,
+  },
+  {
+    "m-demare/hlargs.nvim",
   },
 
   -- Organize errors, warnings, references.
