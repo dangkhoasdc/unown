@@ -6,6 +6,9 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,termi
 -- line number
 vim.o.number = false
 
+-- center the cursor
+vim.o.scrolloff = 999
+
 local macro_group = vim.api.nvim_create_augroup("MacroRecording", { clear = true })
 vim.api.nvim_create_autocmd("RecordingLeave", {
   group = macro_group,
