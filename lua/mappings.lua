@@ -84,3 +84,14 @@ map(
   "<cmd>CodeCompanionChat Add<cr>",
   { desc = "Code[c]ompanion [c]hat add", noremap = true, silent = true }
 )
+
+local builtin = require('telescope.builtin')
+
+map("n", "<TAB>", "<C-^>", { noremap = true, silent = true, desc = "Toggle last buffer" })
+map("n", "<S-TAB>", function()
+  builtin.buffers {
+    show_all_buffers = true,
+    sort_lastused = true,
+    ignore_current_buffer = true,
+  }
+end, { noremap = true, silent = true, desc = "Telescope Buffers" })
