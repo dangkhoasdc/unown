@@ -38,12 +38,31 @@ vim.filetype.add {
   pattern = {
     -- INFO: Match filenames like - ".env.example", ".env.local" and so on
     ["%.env%.[%w_.-]+"] = "dotenv",
+    ["openapi.*%.ya?ml"] = "yaml.openapi",
+    ["openapi.*%.json"] = "json.openapi",
+    ["api.*%.ya?ml"] = "yaml.openapi",
+    ["api.*%.json"] = "json.openapi",
   },
 }
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNewFile' }, {
-  pattern = '.env*',
-  command = 'set filetype=dotenv | set syntax=bash',
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  pattern = ".env*",
+  command = "set filetype=dotenv | set syntax=bash",
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  pattern = "vifmrc",
+  command = "set filetype=vim | set syntax=vim",
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  pattern = "*api*.y?ml",
+  command = "set filetype=yaml.openapi | set syntax=yaml",
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  pattern = "*api*.json",
+  command = "set filetype=json.openapi | set syntax=json",
 })
 -- plugin config
 require "configs.cmp"

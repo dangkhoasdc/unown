@@ -22,7 +22,8 @@ end
 require("ufo").setup()
 
 -- lsps with default config
-local servers = { "pylsp", "gopls", "dockerls", "julials", "ruff", "jsonls", "groovyls", "yamlls", "rust_analyzer"}
+local servers =
+  { "pylsp", "gopls", "dockerls", "julials", "ruff", "jsonls", "groovyls", "yamlls", "rust_analyzer", "vacuum" }
 local nvlsp = require "nvchad.configs.lspconfig"
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

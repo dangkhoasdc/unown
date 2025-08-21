@@ -195,6 +195,14 @@ return {
           adapter = "copilot",
         },
       },
+      display = {
+        chat = {
+          window = {
+            width = 0.25,
+            height = 0.8,
+          },
+        },
+      },
     },
   },
 
