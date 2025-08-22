@@ -13,6 +13,30 @@ map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
 local builtin = require "telescope.builtin"
 map("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
 
+map("n", "<leader><leader>", function()
+  require("telescope").extensions.smart_open.smart_open()
+end, { desc = "Smart Open", noremap = true, silent = true })
+
+map("n", "<leader>fs", function()
+  builtin.lsp_document_symbols {
+    symbol_width = 50,
+    symbols = {
+      "Class",
+      "Function",
+      "Method",
+      "Variable",
+      "Property",
+      "Field",
+      "Constructor",
+      "Interface",
+      "Module",
+      "Struct",
+      "Enum",
+      "Constant",
+    },
+  }
+end, { desc = "[F]ind [S]ymbols", noremap = true, silent = true })
+
 -- remapp terms, otherwise it conflicts which resizing panes/windows
 
 vim.keymap.del("n", "<A-h>")
@@ -40,10 +64,6 @@ map("n", "<C-k>", require("smart-splits").move_cursor_up)
 map("n", "<C-l>", require("smart-splits").move_cursor_right)
 map("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 
-map("n", "<leader><leader>", function()
-  require("telescope").extensions.smart_open.smart_open()
-end, { desc = "Smart Open", noremap = true, silent = true })
-
 -- replace the current word
 -- author: https://stackoverflow.com/a/5543793
 map({ "n", "i" }, "<F4>", ":%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i", { desc = "Replace current word" })
@@ -56,10 +76,6 @@ map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
 map("n", "<A-p>", "<Plug>(YankyPreviousEntry)", { desc = "Prev Yanky Entry" })
 map("n", "<A-n>", "<Plug>(YankyNextEntry)", { desc = "Next Yanky Entry" })
-
-map("n", "<leader>pp", function()
-  require("telescope").extensions.yank_history.yank_history()
-end, { noremap = true, silent = true, desc = "Telescope Yank History" })
 
 map({ "n", "x" }, "gra", function()
   require("tiny-code-action").code_action()
@@ -85,8 +101,7 @@ map(
   { desc = "Code[c]ompanion [c]hat add", noremap = true, silent = true }
 )
 
-local builtin = require('telescope.builtin')
-
+-- TAB
 map("n", "<TAB>", "<C-^>", { noremap = true, silent = true, desc = "Toggle last buffer" })
 map("n", "<S-TAB>", function()
   builtin.buffers {
