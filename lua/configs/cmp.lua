@@ -4,11 +4,11 @@ local config = cmp.get_config()
 
 table.insert(config.sources, {
   name = "copilot",
-  group_index = 1,
+  group_index = 2,
 })
 
-config.mapping["Tab"] = nil
-config.mapping["<S-Tab>"] = nil
+config.mapping["<TAB>"] = nil
+config.mapping["<S-TAB>"] = nil
 
 config.formatting = {
   format = function(entry, vim_item)
