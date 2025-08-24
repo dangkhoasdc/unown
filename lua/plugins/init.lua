@@ -86,6 +86,7 @@ return {
   },
   {
     "m-demare/hlargs.nvim",
+    lazy = false,
   },
 
   -- Organize errors, warnings, references.
@@ -300,12 +301,13 @@ return {
   },
 
   -- surround
+  -- move to kylochui plugin cause I want to have `s` mapping for `flash.nvim` later.
+  -- also existsing mapping makes more sense than that of echasnovski
   {
-    "echasnovski/mini.surround",
-    version = false,
-    lazy = false,
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
     config = function()
-      require("mini.surround").setup()
+      require("nvim-surround").setup {}
     end,
   },
 
