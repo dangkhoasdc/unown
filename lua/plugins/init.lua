@@ -329,14 +329,6 @@ return {
 
   -- -- jumps & marks management
   {
-    "chentoast/marks.nvim",
-    event = "VeryLazy",
-    opts = {},
-    keys = {
-      { "<localleader>M", "<cmd>BookmarksQFListAll<cr>", desc = "Toggle bookmarks" },
-    },
-  },
-  {
     "otavioschwanck/arrow.nvim",
     lazy = false,
     dependencies = {
