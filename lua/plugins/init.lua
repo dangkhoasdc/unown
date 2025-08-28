@@ -213,8 +213,8 @@ return {
     lazy = false,
     config = function()
       -- Fix: https://github.com/ggandor/leap.nvim/issues/224
-      vim.keymap.set("n", "ss", "<Plug>(leap-anywhere)")
-      vim.keymap.set({ "x", "o" }, "ss", "<Plug>(leap)")
+      vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
+      vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)")
     end,
   },
   {
