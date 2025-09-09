@@ -690,4 +690,10 @@ return {
       { "<localleader>e", ":GoIfErr<cr>", desc = "Generate If Eerr" },
     },
   },
+
+  -- -- plantuml
+  {
+    "aklt/plantuml-syntax",
+    ft = { "plantuml" },
+  }
 }
