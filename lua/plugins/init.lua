@@ -435,6 +435,11 @@ return {
     end,
   },
 
+  {
+    "cappyzawa/trim.nvim",
+    event = "BufWritePre",
+  },
+
   -- open other file
   {
     "rgroli/other.nvim",
