@@ -1,6 +1,5 @@
 local options = {
   formatters_by_ft = {
-    lua = { "stylua" },
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     go = { "gofmt" },
     markdown = { "markdownlint-cli2" },
@@ -8,8 +7,8 @@ local options = {
     groovy = { "npm-groovy-lint" },
     yaml = { "yamlfmt" },
     rust = { "rustfmt" },
-    bash = {"shellharden"},
-    sh = {"shellharden"},
+    bash = { "shellharden" },
+    sh = { "shellharden" },
   },
   default_format_opts = {
     timeout_ms = 5000,
