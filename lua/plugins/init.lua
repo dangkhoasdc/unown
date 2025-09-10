@@ -188,7 +188,6 @@ return {
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
       strategies = {
@@ -698,5 +697,10 @@ return {
   {
     "aklt/plantuml-syntax",
     ft = { "plantuml" },
-  }
+  },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" }
+  },
 }
