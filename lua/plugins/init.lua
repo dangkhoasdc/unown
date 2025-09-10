@@ -229,14 +229,14 @@ return {
     lazy = false,
     config = function()
       require("tabout").setup {
-        tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+        tabkey = "<Tab>",             -- key to trigger tabout, set to an empty string to disable
         backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-        act_as_tab = true, -- shift content if tab out is not possible
-        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-        default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-        default_shift_tab = "<C-d>", -- reverse shift default action,
-        enable_backwards = true, -- well ...
-        completion = false, -- if the tabkey is used in a completion pum
+        act_as_tab = true,            -- shift content if tab out is not possible
+        act_as_shift_tab = false,     -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        default_tab = "<C-t>",        -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+        default_shift_tab = "<C-d>",  -- reverse shift default action,
+        enable_backwards = true,      -- well ...
+        completion = false,           -- if the tabkey is used in a completion pum
         tabouts = {
           { open = "'", close = "'" },
           { open = '"', close = '"' },
@@ -254,7 +254,7 @@ return {
       "L3MON4D3/LuaSnip",
       "hrsh7th/nvim-cmp",
     },
-    opt = false, -- Set this to true if the plugin is optional
+    opt = false,             -- Set this to true if the plugin is optional
     event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
     priority = 1000,
   },
@@ -336,7 +336,7 @@ return {
     },
     opts = {
       show_icons = true,
-      leader_key = ";", -- Recommended to be a single key
+      leader_key = ";",        -- Recommended to be a single key
       buffer_leader_key = "m", -- Per Buffer Mappings
     },
   },
@@ -396,7 +396,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial Toggle" },
+      { "<leader>a", "<cmd>AerialToggle!<CR>",   desc = "Aerial Toggle" },
       { "<leader>A", "<cmd>AerialNavToggle<CR>", desc = "Aerial Nav Toggle" },
     },
   },
@@ -455,7 +455,7 @@ return {
       }
     end,
     keys = {
-      { "<leader>oo", "<cmd>:Other<CR>", desc = "[o]pen [o]ther file" },
+      { "<leader>oo", "<cmd>:Other<CR>",       desc = "[o]pen [o]ther file" },
       { "<leader>ov", "<cmd>:OtherVSplit<CR>", desc = "[o]pen Other [v]split file" },
     },
   },
@@ -492,11 +492,11 @@ return {
         },
       },
       presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        bottom_search = true,         -- use a classic bottom cmdline for search
+        command_palette = true,       -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- disable inc-rename
-        lsp_doc_border = true, -- add a border to hover docs and signature help
+        inc_rename = false,           -- disable inc-rename
+        lsp_doc_border = true,        -- add a border to hover docs and signature help
       },
       routes = {
         {
@@ -614,8 +614,8 @@ return {
   {
     "shortcuts/no-neck-pain.nvim",
     keys = {
-      { "<leader>pn", ":NoNeckPain<CR>", desc = "Toggle No Neck Pain", noremap = true, silent = true },
-      { "<leader>ps", ":NoNeckPainScratchPad<CR>", desc = "Open Scratch Pad", noremap = true, silent = true },
+      { "<leader>pn", ":NoNeckPain<CR>",           desc = "Toggle No Neck Pain", noremap = true, silent = true },
+      { "<leader>ps", ":NoNeckPainScratchPad<CR>", desc = "Open Scratch Pad",    noremap = true, silent = true },
     },
     config = function()
       require("no-neck-pain").setup {
