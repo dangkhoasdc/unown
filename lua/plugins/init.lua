@@ -437,7 +437,10 @@ return {
 
   {
     "cappyzawa/trim.nvim",
-    event = "BufWritePre",
+    lazy = false,
+    config = function()
+      require("trim").setup {}
+    end,
   },
 
   -- open other file
