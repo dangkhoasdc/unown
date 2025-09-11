@@ -70,7 +70,9 @@ return {
     "zbirenbaum/neodim",
     event = "LspAttach",
     config = function()
-      require("neodim").setup()
+      require("neodim").setup({
+        priority = 200,
+      })
     end,
   },
   -- show code context on top of the buffer
