@@ -6,6 +6,8 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,termi
 -- line number
 vim.o.number = false
 
+vim.o.wrap = false
+
 -- center the cursor
 vim.o.scrolloff = 999
 
