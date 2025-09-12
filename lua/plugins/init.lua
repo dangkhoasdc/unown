@@ -230,8 +230,17 @@ return {
       -- Fix: https://github.com/ggandor/leap.nvim/issues/224
       vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
       vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)")
+
+      require('leap').opts.preview_filter =
+          function(ch0, ch1, ch2)
+            return not (
+              ch1:match('%s') or
+              ch0:match('%a') and ch1:match('%a') and ch2:match('%a')
+            )
+          end
     end,
   },
+  -- f/F/t/T motions on steroids
   {
     "ggandor/flit.nvim",
     lazy = false,
