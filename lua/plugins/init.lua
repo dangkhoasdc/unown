@@ -100,6 +100,8 @@ return {
       }
     end,
   },
+
+  -- highlight arguments of functions
   {
     "m-demare/hlargs.nvim",
     lazy = false,
@@ -122,7 +124,7 @@ return {
         size = { width = 0.3, height = 0.3 },
         zindex = 200,
       },
-    }, -- for default options, refer to the configuration section for custom setup.
+    },
     cmd = "Trouble",
     keys = {
       {
@@ -145,8 +147,7 @@ return {
 
   {
     "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = "v2.*",
     dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
@@ -165,6 +166,7 @@ return {
       ring = { storage = "sqlite" },
     },
   },
+
   -- AI coding assistant
   {
     "zbirenbaum/copilot.lua",
