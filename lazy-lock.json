@@ -1,7 +1,6 @@
 {
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "NvChad": { "branch": "v2.5", "commit": "b5b38ebee53bcc8b71a917916ce61504ffffd509" },
-  "aerial.nvim": { "branch": "master", "commit": "c7cbbad40c2065fccfd1f1863bb2c08180c0533d" },
   "arrow.nvim": { "branch": "master", "commit": "6e0f726f55f99332dd726a53effd6813786b6d49" },
   "auto-session": { "branch": "main", "commit": "4be42f3cc862f129c2f872145aa12a1f7ccaaed9" },
   "base46": { "branch": "v2.5", "commit": "fde7a2cd54599e148d376f82980407c2d24b0fa2" },
@@ -19,7 +18,7 @@
   "flit.nvim": { "branch": "main", "commit": "513e38abe61237c53a9e983e45595b1d2e7d5391" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "garbage-day.nvim": { "branch": "main", "commit": "08c46d9d6c918207ee04983c3eb6a89753e960a4" },
-  "gitsigns.nvim": { "branch": "main", "commit": "6e3c66548035e50db7bd8e360a29aec6620c3641" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f780609807eca1f783a36a8a31c30a48fbe150c5" },
   "gopher.nvim": { "branch": "main", "commit": "295e21e637f9194a4d2bc34622d324a88b028141" },
   "helpview.nvim": { "branch": "main", "commit": "10a4fc23876c879bcd364b7d21564e905ff49d36" },
   "hlargs.nvim": { "branch": "main", "commit": "ce8d705866dae44513ff48613d5e37e4da524d70" },

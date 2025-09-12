@@ -415,21 +415,6 @@ return {
     end,
   },
 
-  -- code outline
-  {
-    "stevearc/aerial.nvim",
-    opts = {},
-    -- Optional dependencies
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    keys = {
-      { "<leader>a", "<cmd>AerialToggle!<CR>",   desc = "Aerial Toggle" },
-      { "<leader>A", "<cmd>AerialNavToggle<CR>", desc = "Aerial Nav Toggle" },
-    },
-  },
-
   -- annotations
   {
     "danymat/neogen",
