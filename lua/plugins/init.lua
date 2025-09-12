@@ -29,17 +29,31 @@ return {
       require "configs.lspconfig"
     end,
   },
-  "mason-org/mason-lspconfig.nvim",
-  lazy = false,
-  opts = {
-    ensure_installed = {
-      "ruff",
-      "pylsp",
-      "gopls",
-      "jsonls",
+  {
+    "mason-org/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+      ensure_installed = {
+        "pylsp",
+        "gopls",
+        "dockerls",
+        "julials",
+        "ruff",
+        "jsonls",
+        "groovyls",
+        "yamlls",
+        "rust_analyzer",
+        "vacuum",
+        "bashls",
+        "just",
+      },
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig"
     },
   },
-  dependencies = { { "mason-org/mason.nvim", opts = {} }, "neovim/nvim-lspconfig" },
+
   -- formatters
   {
     "stevearc/conform.nvim",
@@ -70,9 +84,9 @@ return {
     "zbirenbaum/neodim",
     event = "LspAttach",
     config = function()
-      require("neodim").setup({
+      require("neodim").setup {
         priority = 200,
-      })
+      }
     end,
   },
   -- show code context on top of the buffer
@@ -681,15 +695,9 @@ return {
   {
     "olexsmir/gopher.nvim",
     ft = "go",
-    cmd = { "GoInstallDeps", "GoUpdateBinaries" },
-    -- branch = "develop"
-    -- (optional) will update plugin's deps on every update
     build = function()
       vim.cmd.GoInstallDeps()
     end,
-
-    ---@type gopher.Config
-    opts = {},
     keys = {
       { "<localleader>e", ":GoIfErr<cr>", desc = "Generate If Eerr" },
     },
@@ -701,8 +709,9 @@ return {
     ft = { "plantuml" },
   },
 
+  -- -- markdown
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" }
+    ft = { "markdown", "codecompanion" },
   },
 }
