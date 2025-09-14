@@ -613,19 +613,6 @@ return {
   },
   -- Misc
   {
-    "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    cmd = { "Octo" },
-    config = function()
-      require("octo").setup()
-    end,
-  },
-
-  {
     "shortcuts/no-neck-pain.nvim",
     keys = {
       { "<leader>pn", ":NoNeckPain<CR>",           desc = "Toggle No Neck Pain", noremap = true, silent = true },
