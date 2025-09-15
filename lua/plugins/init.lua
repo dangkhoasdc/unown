@@ -612,30 +612,6 @@ return {
     end,
   },
   -- Misc
-  {
-    "shortcuts/no-neck-pain.nvim",
-    keys = {
-      { "<leader>pn", ":NoNeckPain<CR>",           desc = "Toggle No Neck Pain", noremap = true, silent = true },
-      { "<leader>ps", ":NoNeckPainScratchPad<CR>", desc = "Open Scratch Pad",    noremap = true, silent = true },
-    },
-    config = function()
-      require("no-neck-pain").setup {
-        buffers = {
-          scratchPad = {
-            -- set to `false` to
-            -- disable auto-saving
-            enabled = true,
-            -- set to `nil` to default
-            -- to current working directory
-            location = nil,
-          },
-          bo = {
-            filetype = "md",
-          },
-        },
-      }
-    end,
-  },
 
   -- save and restore sessions
   {
