@@ -338,6 +338,9 @@ return {
     config = function()
       require("nvim-surround").setup {}
     end,
+    dependencies = {
+      { 'nvim-treesitter/nvim-treesitter-textobjects' }
+    }
   },
 
   -- -- smart open
