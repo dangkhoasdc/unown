@@ -206,7 +206,11 @@ return {
 
   {
     "olimorris/codecompanion.nvim",
-    lazy = false,
+    keys = {
+      { "<localleader>ca", "<cmd>CodeCompanionActions<cr>",     desc = "Code[c]ompanion [a]ctions",  noremap = true, silent = true },
+      { "<localleader>cc", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Code[c]companion [c]hat",    noremap = true, silent = true },
+      { "grc",             "<cmd>CodeCompanionChat Add<cr>",    desc = "Code[c]ompanion [c]hat add", noremap = true, silent = true },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },

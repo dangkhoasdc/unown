@@ -81,26 +81,6 @@ map({ "n", "x" }, "gra", function()
   require("tiny-code-action").code_action()
 end, { noremap = true, silent = true, desc = "Open Code Action" })
 
--- CodeCompanions
-map(
-  { "n", "v" },
-  "<localleader>ca",
-  "<cmd>CodeCompanionActions<cr>",
-  { desc = "Code[c]ompanion [a]ctions", noremap = true, silent = true }
-)
-map(
-  { "n", "v" },
-  "<localleader>cc",
-  "<cmd>CodeCompanionChat Toggle<cr>",
-  { desc = "Code[c]companion [c]hat", noremap = true, silent = true }
-)
-map(
-  "v",
-  "<localleader>cA",
-  "<cmd>CodeCompanionChat Add<cr>",
-  { desc = "Code[c]ompanion [c]hat add", noremap = true, silent = true }
-)
-
 -- TAB
 map("n", "<TAB>", "<C-^>", { noremap = true, silent = true, desc = "Toggle last buffer" })
 map("n", "<S-TAB>", function()
