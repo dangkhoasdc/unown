@@ -25,13 +25,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
     lazy = false,
+    automatic_enable = {
+      exclude = {
+        "gopls"
+      }
+    },
     opts = {
       ensure_installed = {
         "pylsp",
