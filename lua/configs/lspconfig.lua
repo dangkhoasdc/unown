@@ -55,7 +55,6 @@ local servers = {
 
   },
   dockerls = {},
-  julials = {},
   ruff = {},
   jsonls = {},
   groovyls = {

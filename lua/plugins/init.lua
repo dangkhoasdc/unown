@@ -33,7 +33,9 @@ return {
     lazy = false,
     automatic_enable = {
       exclude = {
-        "gopls"
+        "gopls",
+        -- this seems never works.
+        "julials",
       }
     },
     opts = {
@@ -41,7 +43,6 @@ return {
         "pylsp",
         "gopls",
         "dockerls",
-        "julials",
         "ruff",
         "jsonls",
         "groovyls",
