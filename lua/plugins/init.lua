@@ -647,11 +647,14 @@ return {
   },
 
   {
-    'nvim-focus/focus.nvim',
-    version = false,
+    "anuvyklack/windows.nvim",
     lazy = false,
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
     config = function()
-      require("focus").setup()
+      require("windows").setup()
     end,
   },
 
