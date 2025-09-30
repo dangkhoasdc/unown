@@ -623,6 +623,15 @@ return {
       require("colorful-menu").setup {}
     end,
   },
+
+  -- wrapping modes
+  {
+    "andrewferrier/wrapping.nvim",
+    lazy = false,
+    config = function()
+      require("wrapping").setup()
+    end
+  },
   -- Misc
 
   -- save and restore sessions
