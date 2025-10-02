@@ -679,6 +679,13 @@ return {
     lazy = false,
   },
 
+  -- todo
+  {
+    "bngarren/checkmate.nvim",
+    ft = "markdown",
+    opts = {},
+  },
+
   -- PROGRAMMING LANGUAGES
   -- -- json
   {
@@ -708,5 +715,12 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "codecompanion" },
+    config = function()
+      require("render-markdown").setup({
+        checkbox = {
+          enabled = false,
+        }
+      })
+    end,
   },
 }
