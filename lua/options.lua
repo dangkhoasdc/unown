@@ -12,7 +12,7 @@ vim.o.wrap = false
 vim.o.splitkeep = 'cursor'
 vim.o.winwidth = 20
 vim.o.winminwidth = 15
-vim.o.winheight = 20
+vim.o.winheight = 15
 vim.o.winminheight = 10
 vim.o.equalalways = false
 
