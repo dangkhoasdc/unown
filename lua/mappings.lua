@@ -90,3 +90,19 @@ map("n", "<S-TAB>", function()
     ignore_current_buffer = true,
   }
 end, { noremap = true, silent = true, desc = "Telescope Buffers" })
+
+map('n', ']c', function()
+  if vim.wo.diff then
+    vim.cmd.normal({ ']c', bang = true })
+  else
+    require('gitsigns').nav_hunk('next')
+  end
+end)
+
+map('n', '[c', function()
+  if vim.wo.diff then
+    vim.cmd.normal({ '[c', bang = true })
+  else
+    require('gitsigns').nav_hunk('prev')
+  end
+end)
