@@ -254,14 +254,6 @@ return {
           end
     end,
   },
-  -- f/F/t/T motions on steroids
-  {
-    "ggandor/flit.nvim",
-    lazy = false,
-    config = function()
-      require("flit").setup {}
-    end,
-  },
   -- select by on treesitter
   {
     "mfussenegger/nvim-treehopper",
