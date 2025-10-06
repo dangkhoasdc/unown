@@ -74,5 +74,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
   pattern = "*api*.json",
   command = "set filetype=json.openapi | set syntax=json",
 })
+
+-- Current indent line highlight
+vim.cmd.highlight('IndentLineCurrent guifg=#29ab87')
 -- plugin config
 require "configs.cmp"

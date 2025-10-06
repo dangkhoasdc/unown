@@ -612,6 +612,14 @@ return {
       require("wrapping").setup()
     end
   },
+
+  {
+    "nvimdev/indentmini.nvim",
+    lazy = false,
+    config = function()
+      require("indentmini").setup()
+    end,
+  },
   -- Misc
 
   -- save and restore sessions
