@@ -68,15 +68,6 @@ map("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 -- author: https://stackoverflow.com/a/5543793
 map({ "n", "i" }, "<F4>", ":%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i", { desc = "Replace current word" })
 
--- yanky
-map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
-map("n", "<A-p>", "<Plug>(YankyPreviousEntry)", { desc = "Prev Yanky Entry" })
-map("n", "<A-n>", "<Plug>(YankyNextEntry)", { desc = "Next Yanky Entry" })
-
 map({ "n", "x" }, "gra", function()
   require("tiny-code-action").code_action()
 end, { noremap = true, silent = true, desc = "Open Code Action" })

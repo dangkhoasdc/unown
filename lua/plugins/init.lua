@@ -170,6 +170,14 @@ return {
     opts = {
       ring = { storage = "sqlite" },
     },
+    keys = {
+      { "\"",    "<cmd>YankyRingHistory<cr>",  mode = { "n", "x" }, desc = "Open Yank History" },
+      { "y",     "<Plug>(YankyYank)",          mode = { "n", "x" }, desc = "Yank text" },
+      { "p",     "<Plug>(YankyPutAfter)",      mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P",     "<Plug>(YankyPutBefore)",     mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" },      desc = "Prev Yanky Entry" },
+      { "<A-n>", "<Plug>(YankyNextEntry)",     mode = { "n" },      desc = "Next Yanky Entry" },
+    }
   },
 
   -- AI coding assistant
