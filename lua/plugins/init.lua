@@ -623,6 +623,20 @@ return {
   },
   -- Misc
 
+  -- runner management
+  {
+    'stevearc/overseer.nvim',
+    lazy = false,
+    config = function()
+      require('overseer').setup({
+        templates = { "builtin" }
+      })
+    end,
+    keys = {
+      {"<localleader>r", "<cmd>OverseerRun<cr>", desc = "[R]un a task" },
+      {"<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
+    }
+  },
   -- save and restore sessions
   {
     "rmagatti/auto-session",
