@@ -97,3 +97,9 @@ map('n', '[c', function()
     require('gitsigns').nav_hunk('prev')
   end
 end)
+
+vim.keymap.set('n', '\\q', function()
+  local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
+  local action = qf_winid > 0 and 'cclose' or 'copen'
+  vim.cmd('botright ' .. action)
+end, { noremap = true, silent = true })
