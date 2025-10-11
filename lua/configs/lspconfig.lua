@@ -49,7 +49,6 @@ local servers = {
         staticcheck = true,
         directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
         gofumpt = false,
-        staticheck = true,
       },
     },
 
