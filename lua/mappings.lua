@@ -3,8 +3,6 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 -- General
--- Undotree
-map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree" })
 
 -- TODO
 map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
