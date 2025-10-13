@@ -330,20 +330,14 @@ return {
     }
   },
 
-  -- -- smart open
+  -- -- frecency
   {
-    "danielfalk/smart-open.nvim",
-    branch = "0.2.x",
+    "nvim-telescope/telescope-frecency.nvim",
+    -- install the latest stable version
+    version = "*",
     config = function()
-      require("telescope").load_extension "smart_open"
-      require("telescope").extensions.smart_open.smart_open {
-        cwd_only = true,
-      }
+      require("telescope").load_extension "frecency"
     end,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      "nvim-telescope/telescope-fzy-native.nvim",
-    },
   },
 
   -- -- jumps & marks management
@@ -623,8 +617,8 @@ return {
       })
     end,
     keys = {
-      {"<localleader>r", "<cmd>OverseerRun<cr>", desc = "[R]un a task" },
-      {"<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
+      { "<localleader>r", "<cmd>OverseerRun<cr>",    desc = "[R]un a task" },
+      { "<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
     }
   },
   -- save and restore sessions

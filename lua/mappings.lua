@@ -13,9 +13,9 @@ map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
 local builtin = require "telescope.builtin"
 map("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
 
-map("n", "<leader><leader>", function()
-  require("telescope").extensions.smart_open.smart_open()
-end, { desc = "Smart Open", noremap = true, silent = true })
+map("n", "<leader><leader>",
+  ':Telescope frecency workspace=CWD path_display={"filename_first"} theme=ivy<cr>',
+  { desc = "File Open", noremap = true, silent = true })
 
 map("n", "<leader>fs", function()
   builtin.lsp_document_symbols {
@@ -37,7 +37,7 @@ map("n", "<leader>fs", function()
   }
 end, { desc = "[F]ind [S]ymbols", noremap = true, silent = true })
 
--- remapp terms, otherwise it conflicts which resizing panes/windows
+-- remap terms, otherwise it conflicts which resizing panes/windows
 
 vim.keymap.del("n", "<A-h>")
 vim.keymap.del("n", "<A-v>")
