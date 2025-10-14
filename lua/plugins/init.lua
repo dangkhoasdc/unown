@@ -336,6 +336,13 @@ return {
     -- install the latest stable version
     version = "*",
     config = function()
+      require("telescope").setup {
+        extensions = {
+          frecency = {
+            matcher = "fuzzy",
+          },
+        },
+      }
       require("telescope").load_extension "frecency"
     end,
   },
