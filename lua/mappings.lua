@@ -86,7 +86,7 @@ map('n', ']c', function()
   else
     require('gitsigns').nav_hunk('next')
   end
-end)
+end, { noremap = true, silent = true, desc = "Next Git Hunk" })
 
 map('n', '[c', function()
   if vim.wo.diff then
@@ -94,7 +94,7 @@ map('n', '[c', function()
   else
     require('gitsigns').nav_hunk('prev')
   end
-end)
+end, { noremap = true, silent = true, desc = "Prev Git Hunk" })
 
 vim.keymap.set('n', '\\q', function()
   local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
