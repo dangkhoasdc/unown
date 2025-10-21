@@ -51,6 +51,7 @@ return {
         "vacuum",
         "bashls",
         "just",
+        "marksman",
       },
     },
     dependencies = {

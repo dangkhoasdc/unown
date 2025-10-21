@@ -65,6 +65,7 @@ local servers = {
   vacuum = {},
   bashls = {},
   just = {},
+  marksman = {},
 }
 
 
