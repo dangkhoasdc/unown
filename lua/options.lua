@@ -9,7 +9,7 @@ vim.o.number = false
 vim.o.wrap = false
 
 -- window setting
-vim.o.splitkeep = 'cursor'
+vim.o.splitkeep = "cursor"
 vim.o.winwidth = 20
 vim.o.winminwidth = 15
 vim.o.winheight = 15
@@ -76,6 +76,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 })
 
 -- Current indent line highlight
-vim.cmd.highlight('IndentLineCurrent guifg=#29ab87')
+vim.cmd.highlight "IndentLineCurrent guifg=#29ab87"
+
 -- plugin config
 require "configs.cmp"

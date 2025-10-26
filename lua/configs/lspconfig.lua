@@ -66,6 +66,7 @@ local servers = {
   bashls = {},
   just = {},
   marksman = {},
+  clojure_lsp = {},
 }
 
 

@@ -36,7 +36,7 @@ return {
         "gopls",
         -- this seems never works.
         "julials",
-      }
+      },
     },
     opts = {
       ensure_installed = {
@@ -56,7 +56,7 @@ return {
     },
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
-      "neovim/nvim-lspconfig"
+      "neovim/nvim-lspconfig",
     },
   },
 
@@ -66,7 +66,7 @@ return {
     dependencies = { "rmagatti/logger.nvim" },
     event = "BufEnter",
     config = function()
-      require('goto-preview').setup {
+      require("goto-preview").setup {
         default_mappings = true,
       }
     end,
@@ -184,13 +184,13 @@ return {
       ring = { storage = "sqlite" },
     },
     keys = {
-      { "\"",    "<cmd>YankyRingHistory<cr>",  mode = { "n", "x" }, desc = "Open Yank History" },
-      { "y",     "<Plug>(YankyYank)",          mode = { "n", "x" }, desc = "Yank text" },
-      { "p",     "<Plug>(YankyPutAfter)",      mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-      { "P",     "<Plug>(YankyPutBefore)",     mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" },      desc = "Prev Yanky Entry" },
-      { "<A-n>", "<Plug>(YankyNextEntry)",     mode = { "n" },      desc = "Next Yanky Entry" },
-    }
+      { '"', "<cmd>YankyRingHistory<cr>", mode = { "n", "x" }, desc = "Open Yank History" },
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" }, desc = "Prev Yanky Entry" },
+      { "<A-n>", "<Plug>(YankyNextEntry)", mode = { "n" }, desc = "Next Yanky Entry" },
+    },
   },
 
   -- AI coding assistant
@@ -233,9 +233,27 @@ return {
   {
     "olimorris/codecompanion.nvim",
     keys = {
-      { "<localleader>ca", "<cmd>CodeCompanionActions<cr>",     desc = "Code[c]ompanion [a]ctions",  noremap = true, silent = true },
-      { "<localleader>cc", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Code[c]companion [c]hat",    noremap = true, silent = true },
-      { "grc",             "<cmd>CodeCompanionChat Add<cr>",    desc = "Code[c]ompanion [c]hat add", noremap = true, silent = true },
+      {
+        "<localleader>ca",
+        "<cmd>CodeCompanionActions<cr>",
+        desc = "Code[c]ompanion [a]ctions",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "<localleader>cc",
+        "<cmd>CodeCompanionChat Toggle<cr>",
+        desc = "Code[c]companion [c]hat",
+        noremap = true,
+        silent = true,
+      },
+      {
+        "grc",
+        "<cmd>CodeCompanionChat Add<cr>",
+        desc = "Code[c]ompanion [c]hat add",
+        noremap = true,
+        silent = true,
+      },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -266,13 +284,9 @@ return {
       vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
       vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)")
 
-      require('leap').opts.preview_filter =
-          function(ch0, ch1, ch2)
-            return not (
-              ch1:match('%s') or
-              ch0:match('%a') and ch1:match('%a') and ch2:match('%a')
-            )
-          end
+      require("leap").opts.preview_filter = function(ch0, ch1, ch2)
+        return not (ch1:match "%s" or ch0:match "%a" and ch1:match "%a" and ch2:match "%a")
+      end
     end,
   },
   -- select by on treesitter
@@ -327,8 +341,8 @@ return {
       require("nvim-surround").setup {}
     end,
     dependencies = {
-      { 'nvim-treesitter/nvim-treesitter-textobjects' }
-    }
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+    },
   },
 
   -- -- frecency
@@ -357,7 +371,7 @@ return {
     },
     opts = {
       show_icons = true,
-      leader_key = ";",        -- Recommended to be a single key
+      leader_key = ";", -- Recommended to be a single key
       buffer_leader_key = "m", -- Per Buffer Mappings
       index_keys = "1234789zxcbnafghjklwrtyuiop",
     },
@@ -409,7 +423,11 @@ return {
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
       require("ufo").setup {
         close_fold_kinds_for_ft = {
-          default = { "imports" },
+          python = { "imports" },
+          go = { "imports" },
+        },
+        close_fold_current_line_for_ft = {
+          clojure = false,
         },
       }
     end,
@@ -469,7 +487,7 @@ return {
       }
     end,
     keys = {
-      { "<leader>oo", "<cmd>:Other<CR>",       desc = "[o]pen [o]ther file" },
+      { "<leader>oo", "<cmd>:Other<CR>", desc = "[o]pen [o]ther file" },
       { "<leader>ov", "<cmd>:OtherVSplit<CR>", desc = "[o]pen Other [v]split file" },
     },
   },
@@ -506,11 +524,11 @@ return {
         },
       },
       presets = {
-        bottom_search = true,         -- use a classic bottom cmdline for search
-        command_palette = true,       -- position the cmdline and popupmenu together
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false,           -- disable inc-rename
-        lsp_doc_border = true,        -- add a border to hover docs and signature help
+        inc_rename = false, -- disable inc-rename
+        lsp_doc_border = true, -- add a border to hover docs and signature help
       },
       routes = {
         {
@@ -610,7 +628,7 @@ return {
     lazy = false,
     config = function()
       require("wrapping").setup()
-    end
+    end,
   },
 
   {
@@ -624,17 +642,17 @@ return {
 
   -- runner management
   {
-    'stevearc/overseer.nvim',
+    "stevearc/overseer.nvim",
     lazy = false,
     config = function()
-      require('overseer').setup({
-        templates = { "builtin" }
-      })
+      require("overseer").setup {
+        templates = { "builtin" },
+      }
     end,
     keys = {
-      { "<localleader>r", "<cmd>OverseerRun<cr>",    desc = "[R]un a task" },
+      { "<localleader>r", "<cmd>OverseerRun<cr>", desc = "[R]un a task" },
       { "<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
-    }
+    },
   },
   -- save and restore sessions
   {
@@ -721,11 +739,11 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "codecompanion" },
     config = function()
-      require("render-markdown").setup({
+      require("render-markdown").setup {
         checkbox = {
           enabled = false,
-        }
-      })
+        },
+      }
     end,
   },
 }
