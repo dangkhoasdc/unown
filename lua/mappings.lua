@@ -42,11 +42,11 @@ vim.keymap.del("n", "<A-v>")
 vim.keymap.del("n", "<leader>cm")
 
 -- toggleable
-map({ "n", "t" }, "<leader>v", function()
+map({ "n", "t" }, "<A-v>", function()
   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggleable vertical term" })
 
-map({ "n", "t" }, "<leader>h", function()
+map({ "n", "t" }, "<A-b>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggleable horizontal term" })
 
