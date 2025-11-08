@@ -677,18 +677,6 @@ return {
     },
   },
 
-  {
-    "anuvyklack/windows.nvim",
-    lazy = false,
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
-    },
-    config = function()
-      require("windows").setup()
-    end,
-  },
-
   -- auto close buffers when inactive
   {
     "chrisgrieser/nvim-early-retirement",
