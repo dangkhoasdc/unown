@@ -613,15 +613,6 @@ return {
     },
   },
 
-  -- better completion menu
-  {
-    "xzbdmw/colorful-menu.nvim",
-    lazy = false,
-    config = function()
-      require("colorful-menu").setup {}
-    end,
-  },
-
   -- wrapping modes
   {
     "andrewferrier/wrapping.nvim",
