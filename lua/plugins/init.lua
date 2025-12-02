@@ -710,11 +710,8 @@ return {
   {
     "olexsmir/gopher.nvim",
     ft = "go",
-    build = function()
-      vim.cmd.GoInstallDeps()
-    end,
     keys = {
-      { "<localleader>e", ":GoIfErr<cr>", desc = "Generate If Eerr" },
+      { "<localleader>e", ":GoIfErr<cr>", desc = "Generate If err" },
     },
   },
 
