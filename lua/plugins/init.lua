@@ -577,6 +577,11 @@ return {
     end,
   },
 
+  -- trail cursor
+  {
+    'danilamihailov/beacon.nvim',
+    event = "CursorMoved",
+  },
   -- better Quickfix
   {
     "kevinhwang91/nvim-bqf",
