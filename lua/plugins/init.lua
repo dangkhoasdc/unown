@@ -407,6 +407,12 @@ return {
     opts = {},
   },
 
+  {
+    'numToStr/Comment.nvim',
+    lazy=false,
+    opts = {}
+  },
+
   -- folding
   {
     "kevinhwang91/nvim-ufo",
