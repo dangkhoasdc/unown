@@ -96,8 +96,11 @@ map('n', '[c', function()
   end
 end, { noremap = true, silent = true, desc = "Prev Git Hunk" })
 
-vim.keymap.set('n', '\\q', function()
+map('n', '\\q', function()
   local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
   local action = qf_winid > 0 and 'cclose' or 'copen'
   vim.cmd('botright ' .. action)
 end, { noremap = true, silent = true })
+
+-- Others
+map('n', "<F12>", ":Lazy sync<cr>", {desc = "Sync Plugins"})
