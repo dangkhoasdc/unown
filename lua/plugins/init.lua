@@ -184,12 +184,12 @@ return {
       ring = { storage = "sqlite" },
     },
     keys = {
-      { '"',     "<cmd>YankyRingHistory<cr>",  mode = { "n", "x" }, desc = "Open Yank History" },
-      { "y",     "<Plug>(YankyYank)",          mode = { "n", "x" }, desc = "Yank text" },
-      { "p",     "<Plug>(YankyPutAfter)",      mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-      { "P",     "<Plug>(YankyPutBefore)",     mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" },      desc = "Prev Yanky Entry" },
-      { "<A-n>", "<Plug>(YankyNextEntry)",     mode = { "n" },      desc = "Next Yanky Entry" },
+      { '"', "<cmd>YankyRingHistory<cr>", mode = { "n", "x" }, desc = "Open Yank History" },
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" }, desc = "Prev Yanky Entry" },
+      { "<A-n>", "<Plug>(YankyNextEntry)", mode = { "n" }, desc = "Next Yanky Entry" },
     },
   },
 
@@ -371,7 +371,7 @@ return {
     },
     opts = {
       show_icons = true,
-      leader_key = ";",        -- Recommended to be a single key
+      leader_key = ";", -- Recommended to be a single key
       buffer_leader_key = "m", -- Per Buffer Mappings
       index_keys = "1234789zxcbnafghjklwrtyuiop",
     },
@@ -393,8 +393,8 @@ return {
     ---@type UndoTreeCollector.Opts
     opts = {
       window = {
-        winblend = 0
-      }
+        winblend = 0,
+      },
     },
     keys = { -- load the plugin only when using it's keybinding:
       { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
@@ -410,9 +410,9 @@ return {
   },
 
   {
-    'numToStr/Comment.nvim',
-    lazy=false,
-    opts = {}
+    "numToStr/Comment.nvim",
+    lazy = false,
+    opts = {},
   },
 
   -- folding
@@ -495,7 +495,7 @@ return {
       }
     end,
     keys = {
-      { "<leader>oo", "<cmd>:Other<CR>",       desc = "[o]pen [o]ther file" },
+      { "<leader>oo", "<cmd>:Other<CR>", desc = "[o]pen [o]ther file" },
       { "<leader>ov", "<cmd>:OtherVSplit<CR>", desc = "[o]pen Other [v]split file" },
     },
   },
@@ -532,11 +532,11 @@ return {
         },
       },
       presets = {
-        bottom_search = true,         -- use a classic bottom cmdline for search
-        command_palette = true,       -- position the cmdline and popupmenu together
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false,           -- disable inc-rename
-        lsp_doc_border = true,        -- add a border to hover docs and signature help
+        inc_rename = false, -- disable inc-rename
+        lsp_doc_border = true, -- add a border to hover docs and signature help
       },
       routes = {
         {
@@ -587,7 +587,7 @@ return {
 
   -- trail cursor
   {
-    'danilamihailov/beacon.nvim',
+    "danilamihailov/beacon.nvim",
     event = "CursorMoved",
   },
   -- better Quickfix
@@ -654,7 +654,7 @@ return {
       }
     end,
     keys = {
-      { "<localleader>r", "<cmd>OverseerRun<cr>",    desc = "[R]un a task" },
+      { "<localleader>r", "<cmd>OverseerRun<cr>", desc = "[R]un a task" },
       { "<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
     },
   },
@@ -696,11 +696,11 @@ return {
   {
     "echasnovski/mini.diff",
     config = function()
-      local diff = require("mini.diff")
-      diff.setup({
+      local diff = require "mini.diff"
+      diff.setup {
         -- Disabled by default
         source = diff.gen_source.none(),
-      })
+      }
     end,
   },
 
@@ -745,5 +745,15 @@ return {
         },
       }
     end,
+  },
+  {
+    "tadmccorkle/markdown.nvim",
+    ft = "markdown", -- or 'event = "VeryLazy"'
+    opts = {},
+  },
+  {
+    "chenxin-yan/footnote.nvim",
+    ft = "markdown",
+    opts = {},
   },
 }
