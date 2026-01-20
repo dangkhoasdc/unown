@@ -203,11 +203,14 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
+        suggestion = { enabled = true },
+        panel = { enabled = true },
         filetypes = {
           markdown = true,
           lua = true,
+        },
+        nes = {
+          enabled = true,
         },
         server_opts_overrides = {
           settings = {

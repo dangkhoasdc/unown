@@ -12,7 +12,22 @@ local servers = {
           pycodestyle = {
             enabled = false,
           },
+          autopep8 = {
+            enabled = false,
+          },
+          flake8 = {
+            enabled = false,
+          },
+          mccabe = {
+            enabled = false,
+          },
+          rope_autoimport = {
+            enabled = true
+          }
         },
+      },
+      signature = {
+        formatter = 'ruff'
       },
     },
   },
@@ -51,10 +66,20 @@ local servers = {
         gofumpt = false,
       },
     },
-
   },
   dockerls = {},
-  ruff = {},
+  ruff = {
+    init_options = {
+      settings = {
+        lint = {
+          enable = true
+        },
+        format = {
+          preview = true
+        }
+      },
+    }
+  },
   jsonls = {},
   groovyls = {
     cmd = { "groovy-language-server" },
