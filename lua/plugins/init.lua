@@ -204,21 +204,13 @@ return {
     config = function()
       require("copilot").setup {
         suggestion = { enabled = true },
-        panel = { enabled = true },
+        panel = { enabled = false },
         filetypes = {
           markdown = true,
           lua = true,
         },
         nes = {
-          enabled = true,
-        },
-        server_opts_overrides = {
-          settings = {
-            advanced = {
-              listCount = 10,
-              inlineSuggestCount = 3,
-            },
-          },
+          enabled = false,
         },
       }
     end,
