@@ -7,8 +7,6 @@ local options = {
     groovy = { "npm-groovy-lint" },
     yaml = { "yamlfmt" },
     rust = { "rustfmt" },
-    bash = { "shellharden" },
-    sh = { "shellharden" },
   },
   default_format_opts = {
     timeout_ms = 5000,
