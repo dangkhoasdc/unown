@@ -330,8 +330,6 @@ return {
   },
 
   -- surround
-  -- move to kylochui plugin cause I want to have `s` mapping for `flash.nvim` later.
-  -- also existsing mapping makes more sense than that of echasnovski
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -725,7 +723,6 @@ return {
   {
     "bngarren/checkmate.nvim",
     ft = "markdown",
-    lazy = false,
     opts = {},
   },
 
