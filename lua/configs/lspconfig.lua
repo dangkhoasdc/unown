@@ -91,6 +91,7 @@ local servers = {
   bashls = {},
   just = {},
   marksman = {},
+  serve_d = {},
 }
 
 
