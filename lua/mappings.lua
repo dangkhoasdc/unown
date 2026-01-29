@@ -10,6 +10,9 @@ map("n", "<leader>td", "<cmd>TodoQuickFix<cr>", { desc = "Todo" })
 -- Telescope
 local builtin = require "telescope.builtin"
 map("n", "<leader>fW", builtin.grep_string, { desc = "[F]ind current [W]ord" })
+map("n", "<leader>fw", function()
+  require("telescope").extensions.live_grep_args.live_grep_args()
+end, { desc = "[F]ind [w]ord with args" })
 
 map("n", "<leader><leader>",
   ':Telescope frecency workspace=CWD path_display={"filename_first"} theme=ivy<cr>',
