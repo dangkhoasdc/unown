@@ -51,5 +51,10 @@ vim.filetype.add {
 -- Current indent line highlight
 vim.cmd.highlight "IndentLineCurrent guifg=#29ab87"
 
--- plugin config
-require "configs.cmp"
+-- Defer cmp config loading until InsertEnter for faster startup
+vim.api.nvim_create_autocmd("InsertEnter", {
+  once = true,
+  callback = function()
+    require "configs.cmp"
+  end,
+})

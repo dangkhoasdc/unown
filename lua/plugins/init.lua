@@ -64,7 +64,14 @@ return {
   {
     "rmagatti/goto-preview",
     dependencies = { "rmagatti/logger.nvim" },
-    event = "BufEnter",
+    keys = {
+      { "gpd", desc = "Preview definition" },
+      { "gpt", desc = "Preview type definition" },
+      { "gpi", desc = "Preview implementation" },
+      { "gpD", desc = "Preview declaration" },
+      { "gpr", desc = "Preview references" },
+      { "gP", desc = "Close all previews" },
+    },
     config = function()
       require("goto-preview").setup {
         default_mappings = true,
@@ -75,6 +82,8 @@ return {
   -- formatters
   {
     "stevearc/conform.nvim",
+    event = "BufWritePre",
+    cmd = { "ConformInfo" },
     opts = require "configs.conform",
   },
   -- linters
@@ -110,7 +119,7 @@ return {
   -- show code context on top of the buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPost",
+    event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("treesitter-context").setup {
@@ -122,7 +131,7 @@ return {
   -- highlight arguments of functions
   {
     "m-demare/hlargs.nvim",
-    lazy = false,
+    event = "LspAttach",
     config = function()
       require("hlargs").setup()
     end,
@@ -176,7 +185,6 @@ return {
   -- yanking
   {
     "gbprod/yanky.nvim",
-    lazy = false,
     dependencies = {
       { "kkharji/sqlite.lua" },
     },
@@ -184,12 +192,12 @@ return {
       ring = { storage = "sqlite" },
     },
     keys = {
-      { '"',     "<cmd>YankyRingHistory<cr>",  mode = { "n", "x" }, desc = "Open Yank History" },
-      { "y",     "<Plug>(YankyYank)",          mode = { "n", "x" }, desc = "Yank text" },
-      { "p",     "<Plug>(YankyPutAfter)",      mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-      { "P",     "<Plug>(YankyPutBefore)",     mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" },      desc = "Prev Yanky Entry" },
-      { "<A-n>", "<Plug>(YankyNextEntry)",     mode = { "n" },      desc = "Next Yanky Entry" },
+      { '"', "<cmd>YankyRingHistory<cr>", mode = { "n", "x" }, desc = "Open Yank History" },
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" }, desc = "Prev Yanky Entry" },
+      { "<A-n>", "<Plug>(YankyNextEntry)", mode = { "n" }, desc = "Next Yanky Entry" },
     },
   },
 
@@ -276,12 +284,11 @@ return {
   -- Movements
   {
     url = "https://codeberg.org/andyg/leap.nvim",
-    lazy = false,
+    keys = {
+      { "s", "<Plug>(leap-anywhere)", mode = "n", desc = "Leap anywhere" },
+      { "s", "<Plug>(leap)", mode = { "x", "o" }, desc = "Leap" },
+    },
     config = function()
-      -- Fix: https://github.com/ggandor/leap.nvim/issues/224
-      vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
-      vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)")
-
       require("leap").opts.preview_filter = function(ch0, ch1, ch2)
         return not (ch1:match "%s" or ch0:match "%a" and ch1:match "%a" and ch2:match "%a")
       end
@@ -290,40 +297,46 @@ return {
   -- select by on treesitter
   {
     "mfussenegger/nvim-treehopper",
-    init = function()
-      local keymap = vim.api.nvim_set_keymap
-      keymap("n", "g<CR>", '<cmd>lua require("tsht").nodes()<CR>o<ESC>', {
-        callback = function()
+    keys = {
+      {
+        "g<CR>",
+        function()
           require("tsht").nodes()
-          -- in visual mode type `o` jumps to the other side of selection.
-          -- And then type v to exit visual mode
           vim.cmd "normal! ov"
         end,
-        desc = "jump to treesitter node start",
-      })
-      keymap("n", "g<BS>", "", {
-        callback = function()
+        mode = "n",
+        desc = "Jump to treesitter node start",
+      },
+      {
+        "g<BS>",
+        function()
           require("tsht").nodes()
           vim.cmd "normal! v"
         end,
-        desc = "jump to treesitter node end",
-      })
-      keymap("v", "<CR>", ':<C-U>lua require("tsht").nodes()<CR>', {
-        desc = "treesitter nodes",
-      })
-      keymap("o", "<CR>", "", {
-        callback = function()
+        mode = "n",
+        desc = "Jump to treesitter node end",
+      },
+      {
+        "<CR>",
+        ":<C-U>lua require('tsht').nodes()<CR>",
+        mode = "v",
+        desc = "Treesitter nodes",
+      },
+      {
+        "<CR>",
+        function()
           require("tsht").nodes()
         end,
-        desc = "treesitter nodes",
-      })
-    end,
+        mode = "o",
+        desc = "Treesitter nodes",
+      },
+    },
   },
   -- a/i operators
   {
     "echasnovski/mini.ai",
     version = false,
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("mini.ai").setup()
     end,
@@ -346,6 +359,13 @@ return {
     "nvim-telescope/telescope-frecency.nvim",
     -- install the latest stable version
     version = "*",
+    keys = {
+      {
+        "<leader><leader>",
+        ':Telescope frecency workspace=CWD path_display={"filename_first"} theme=ivy<cr>',
+        desc = "File Open (frecency)",
+      },
+    },
     config = function()
       require("telescope").setup {
         extensions = {
@@ -364,6 +384,12 @@ return {
     dependencies = {
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
+    keys = {
+      { "<leader>fw", desc = "Find word with args" },
+      { "<leader>fW", desc = "Find current word" },
+      { "<leader>fs", desc = "Find symbols" },
+      { "<S-TAB>", desc = "Telescope buffers" },
+    },
     config = function()
       require("telescope").load_extension "live_grep_args"
     end,
@@ -372,7 +398,10 @@ return {
   -- -- jumps & marks management
   {
     "otavioschwanck/arrow.nvim",
-    lazy = false,
+    keys = {
+      { ";", desc = "Arrow leader key" },
+      { "m", desc = "Arrow buffer leader key" },
+    },
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
     },
@@ -385,7 +414,7 @@ return {
   },
   {
     "max397574/better-escape.nvim",
-    lazy = false,
+    event = "InsertEnter",
     config = function()
       require("better_escape").setup {
         timeout = vim.o.timeoutlen,
@@ -418,7 +447,10 @@ return {
 
   {
     "numToStr/Comment.nvim",
-    lazy = false,
+    keys = {
+      { "gc", mode = { "n", "v" }, desc = "Comment toggle linewise" },
+      { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
+    },
     opts = {},
   },
 
@@ -426,7 +458,7 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
-    event = "BufRead",
+    event = "VeryLazy",
     config = function()
       -- Folding settings
       vim.o.foldcolumn = "1"
@@ -484,17 +516,20 @@ return {
 
   {
     "cappyzawa/trim.nvim",
-    lazy = false,
+    event = "BufWritePre",
     config = function()
       require("trim").setup {}
     end,
   },
   {
-    'nvim-mini/mini.align',
-    version = '*',
-    lazy = false,
+    "nvim-mini/mini.align",
+    version = "*",
+    keys = {
+      { "ga", mode = { "n", "v" }, desc = "Align" },
+      { "gA", mode = { "n", "v" }, desc = "Align with preview" },
+    },
     config = function()
-      require('mini.align').setup()
+      require("mini.align").setup()
     end,
   },
 
@@ -577,7 +612,7 @@ return {
   -- telescope UI select
   {
     "nvim-telescope/telescope-ui-select.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("telescope").setup {
         extensions = {
@@ -594,7 +629,7 @@ return {
   {
     "echasnovski/mini.trailspace",
     version = "*",
-    lazy = false,
+    event = "BufReadPost",
     config = function()
       require("mini.trailspace").setup()
     end,
@@ -603,7 +638,7 @@ return {
   -- trail cursor
   {
     "danilamihailov/beacon.nvim",
-    event = "CursorMoved",
+    event = "VeryLazy",
   },
   -- better Quickfix
   {
@@ -644,7 +679,7 @@ return {
   -- wrapping modes
   {
     "andrewferrier/wrapping.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("wrapping").setup()
     end,
@@ -652,7 +687,7 @@ return {
 
   {
     "nvimdev/indentmini.nvim",
-    lazy = false,
+    event = "BufReadPost",
     config = function()
       require("indentmini").setup()
     end,
@@ -662,14 +697,12 @@ return {
   -- runner management
   {
     "stevearc/overseer.nvim",
-    lazy = false,
-    config = function()
-      require("overseer").setup {
-        templates = { "builtin" },
-      }
-    end,
+    cmd = { "OverseerRun", "OverseerToggle", "OverseerInfo" },
+    opts = {
+      templates = { "builtin" },
+    },
     keys = {
-      { "<localleader>r", "<cmd>OverseerRun<cr>",    desc = "[R]un a task" },
+      { "<localleader>r", "<cmd>OverseerRun<cr>", desc = "[R]un a task" },
       { "<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
     },
   },
@@ -687,13 +720,28 @@ return {
   },
 
   -- window management
-  -- move between nvim & tmix, resize windows/panes ...
+  -- move between nvim & tmux, resize windows/panes ...
   {
     "mrjones2014/smart-splits.nvim",
-    lazy = false,
-    opts = {
-      default_amount = 10,
-    },
+    event = "VeryLazy",
+    config = function()
+      require("smart-splits").setup {
+        default_amount = 10,
+      }
+      local ss = require("smart-splits")
+      local map = vim.keymap.set
+      -- Resizing
+      map("n", "<A-h>", ss.resize_left, { desc = "Resize left" })
+      map("n", "<A-j>", ss.resize_down, { desc = "Resize down" })
+      map("n", "<A-k>", ss.resize_up, { desc = "Resize up" })
+      map("n", "<A-l>", ss.resize_right, { desc = "Resize right" })
+      -- Moving between splits
+      map("n", "<C-h>", ss.move_cursor_left, { desc = "Move cursor left" })
+      map("n", "<C-j>", ss.move_cursor_down, { desc = "Move cursor down" })
+      map("n", "<C-k>", ss.move_cursor_up, { desc = "Move cursor up" })
+      map("n", "<C-l>", ss.move_cursor_right, { desc = "Move cursor right" })
+      map("n", "<C-\\>", ss.move_cursor_previous, { desc = "Move cursor previous" })
+    end,
   },
 
   -- auto close buffers when inactive
@@ -705,7 +753,7 @@ return {
 
   {
     "OXY2DEV/helpview.nvim",
-    lazy = false,
+    ft = "help",
   },
 
   {
