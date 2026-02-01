@@ -70,7 +70,7 @@ return {
       { "gpi", desc = "Preview implementation" },
       { "gpD", desc = "Preview declaration" },
       { "gpr", desc = "Preview references" },
-      { "gP", desc = "Close all previews" },
+      { "gP",  desc = "Close all previews" },
     },
     config = function()
       require("goto-preview").setup {
@@ -192,12 +192,12 @@ return {
       ring = { storage = "sqlite" },
     },
     keys = {
-      { '"', "<cmd>YankyRingHistory<cr>", mode = { "n", "x" }, desc = "Open Yank History" },
-      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
-      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" }, desc = "Prev Yanky Entry" },
-      { "<A-n>", "<Plug>(YankyNextEntry)", mode = { "n" }, desc = "Next Yanky Entry" },
+      { '"',     "<cmd>YankyRingHistory<cr>",  mode = { "n", "x" }, desc = "Open Yank History" },
+      { "y",     "<Plug>(YankyYank)",          mode = { "n", "x" }, desc = "Yank text" },
+      { "p",     "<Plug>(YankyPutAfter)",      mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P",     "<Plug>(YankyPutBefore)",     mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "<A-p>", "<Plug>(YankyPreviousEntry)", mode = { "n" },      desc = "Prev Yanky Entry" },
+      { "<A-n>", "<Plug>(YankyNextEntry)",     mode = { "n" },      desc = "Next Yanky Entry" },
     },
   },
 
@@ -285,8 +285,8 @@ return {
   {
     url = "https://codeberg.org/andyg/leap.nvim",
     keys = {
-      { "s", "<Plug>(leap-anywhere)", mode = "n", desc = "Leap anywhere" },
-      { "s", "<Plug>(leap)", mode = { "x", "o" }, desc = "Leap" },
+      { "S", "<Plug>(leap-anywhere)", mode = "n",          desc = "Leap anywhere" },
+      { "S", "<Plug>(leap)",          mode = { "x", "o" }, desc = "Leap" },
     },
     config = function()
       require("leap").opts.preview_filter = function(ch0, ch1, ch2)
@@ -345,7 +345,8 @@ return {
   -- surround
   {
     "kylechui/nvim-surround",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    lazy = false,
     config = function()
       require("nvim-surround").setup {}
     end,
@@ -388,7 +389,7 @@ return {
       { "<leader>fw", desc = "Find word with args" },
       { "<leader>fW", desc = "Find current word" },
       { "<leader>fs", desc = "Find symbols" },
-      { "<S-TAB>", desc = "Telescope buffers" },
+      { "<S-TAB>",    desc = "Telescope buffers" },
     },
     config = function()
       require("telescope").load_extension "live_grep_args"
@@ -702,7 +703,7 @@ return {
       templates = { "builtin" },
     },
     keys = {
-      { "<localleader>r", "<cmd>OverseerRun<cr>", desc = "[R]un a task" },
+      { "<localleader>r", "<cmd>OverseerRun<cr>",    desc = "[R]un a task" },
       { "<localleader>o", "<cmd>OverseerToggle<cr>", desc = "[O]verseer Toggle" },
     },
   },
@@ -811,7 +812,15 @@ return {
   {
     "tadmccorkle/markdown.nvim",
     ft = "markdown", -- or 'event = "VeryLazy"'
-    opts = {},
+    config = function()
+      require("markdown").setup {
+        mappings = {
+          -- Remap to avoid conflict with nvim-surround's ds/cs and Arrow.nvim's 'm'
+          inline_surround_delete = ",id",
+          inline_surround_change = ",ic",
+        },
+      }
+    end,
   },
   {
     "chenxin-yan/footnote.nvim",
