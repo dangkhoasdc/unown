@@ -343,6 +343,7 @@ return {
   },
 
   -- surround
+  -- May do this in the future: https://github.com/kylechui/nvim-surround/issues/151#issuecomment-1247901177
   {
     "kylechui/nvim-surround",
     -- event = "VeryLazy",
@@ -558,7 +559,18 @@ return {
     event = "VeryLazy",
     config = function()
       require("timber").setup {
-        -- Configuration here, or leave empty to use defaults
+        keymaps = {
+          insert_log_below = "<leader>lj",
+          insert_log_above = "<leader>lk",
+          insert_plain_log_below = "<leader>lo",
+          insert_plain_log_above = "<leader>lO",
+          insert_batch_log = "<leader>lb",
+          add_log_targets_to_batch = "<leader>la",
+          insert_log_below_operator = "<leader>Lj",
+          insert_log_above_operator = "<leader>Lk",
+          insert_batch_log_operator = "<leader>Lb",
+          add_log_targets_to_batch_operator = "<leader>La",
+        },
       }
     end,
   },
