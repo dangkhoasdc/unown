@@ -67,7 +67,6 @@ local servers = {
       },
     },
   },
-  dockerls = {},
   ruff = {
     init_options = {
       settings = {
@@ -81,15 +80,7 @@ local servers = {
     }
   },
   jsonls = {},
-  groovyls = {
-    cmd = { "groovy-language-server" },
-    filetypes = { "groovy" },
-  },
-  yamlls = {},
   rust_analyzer = {},
-  vacuum = {},
-  bashls = {},
-  just = {},
   marksman = {},
   serve_d = {},
 }
