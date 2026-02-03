@@ -31,19 +31,19 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     lazy = false,
-    automatic_enable = {
-      exclude = {
-        "gopls",
-        -- this seems never works.
-        "julials",
-      },
-    },
     opts = {
+      automatic_enable = {
+        exclude = {
+          "gopls",
+          "julials",
+        },
+      },
       ensure_installed = {
         "pylsp",
         "gopls",
         "ruff",
         "marksman",
+        -- serve_d installed manually from nightly: ~/.local/bin/serve-d
       },
     },
     dependencies = {
