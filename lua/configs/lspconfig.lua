@@ -82,7 +82,13 @@ local servers = {
   jsonls = {},
   rust_analyzer = {},
   marksman = {},
-  serve_d = {},
+  serve_d = {
+    settings = {
+      dfmt = {
+        braceStyle = "otbs",
+      },
+    },
+  },
 }
 
 
