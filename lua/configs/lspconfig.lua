@@ -2,32 +2,14 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
-  pylsp = {
+  pyright = {
     settings = {
-      pylsp = {
-        plugins = {
-          pyflakes = {
-            enabled = false,
-          },
-          pycodestyle = {
-            enabled = false,
-          },
-          autopep8 = {
-            enabled = false,
-          },
-          flake8 = {
-            enabled = false,
-          },
-          mccabe = {
-            enabled = false,
-          },
-          rope_autoimport = {
-            enabled = true
-          }
+      python = {
+        analysis = {
+          typeCheckingMode = "basic",
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
         },
-      },
-      signature = {
-        formatter = 'ruff'
       },
     },
   },

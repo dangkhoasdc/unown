@@ -36,10 +36,11 @@ return {
         exclude = {
           "gopls",
           "julials",
+          "pylsp",
         },
       },
       ensure_installed = {
-        "pylsp",
+        "pyright",
         "gopls",
         "ruff",
         "marksman",
