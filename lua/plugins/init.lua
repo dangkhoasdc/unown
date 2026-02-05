@@ -539,8 +539,8 @@ return {
       }
     end,
     keys = {
-      { "<leader>oo", "<cmd>:Other<CR>",       desc = "[o]pen [o]ther file" },
-      { "<leader>ov", "<cmd>:OtherVSplit<CR>", desc = "[o]pen Other [v]split file" },
+      { "<localleader>oo", "<cmd>:Other<CR>",       desc = "[o]pen [o]ther file" },
+      { "<localleader>ov", "<cmd>:OtherVSplit<CR>", desc = "[o]pen Other [v]split file" },
     },
   },
 
@@ -777,6 +777,30 @@ return {
     "bngarren/checkmate.nvim",
     ft = "markdown",
     opts = {},
+  },
+
+  -- code outline sidebar
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = {
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle [O]utline" },
+    },
+    opts = {
+      outline_window = {
+        position = "left",
+        width = 15,
+        relative_width = true,
+      },
+      symbol_folding = {
+        autofold_depth = 1,
+        auto_unfold = {
+          hovered = true,
+          only = true,
+        },
+      },
+    },
   },
 
   -- PROGRAMMING LANGUAGES
