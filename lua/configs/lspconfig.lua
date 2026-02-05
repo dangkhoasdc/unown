@@ -66,9 +66,9 @@ local servers = {
   marksman = {},
   serve_d = {
     settings = {
-      dfmt = {
-        braceStyle = "otbs",
-      },
+      d = {
+        enableFormatting = false,
+      }
     },
   },
 }
