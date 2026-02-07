@@ -65,6 +65,7 @@ local servers = {
   rust_analyzer = {},
   marksman = {},
   serve_d = {
+    cmd = { "/home/dkhoa/.local/bin/serve-d" },
     settings = {
       d = {
         enableFormatting = false,
