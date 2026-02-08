@@ -64,15 +64,20 @@ local servers = {
   jsonls = {},
   rust_analyzer = {},
   marksman = {},
-  serve_d = {
-    cmd = { "/home/dkhoa/.local/bin/serve-d" },
+}
+
+-- Conditionally add serve_d if found in PATH
+local serve_d_cmd = vim.fn.exepath "serve-d"
+if serve_d_cmd ~= "" then
+  servers.serve_d = {
+    cmd = { serve_d_cmd },
     settings = {
       d = {
         enableFormatting = false,
-      }
+      },
     },
-  },
-}
+  }
+end
 
 
 for name, opts in pairs(servers) do

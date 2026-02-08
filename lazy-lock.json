@@ -1,7 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "5a1e39223db9a0498024a77b8441169d260c8c25" },
-  "NvChad": { "branch": "v2.5", "commit": "c57b82473b821274f6017eb03582ba1d13be9d8c" },
+  "NvChad": { "branch": "v2.5", "commit": "f437558f23c8f50c36cd09748121ab2c822e8ec9" },
   "arrow.nvim": { "branch": "master", "commit": "6e0f726f55f99332dd726a53effd6813786b6d49" },
   "auto-session": { "branch": "main", "commit": "292492ab7af4bd8b9e37e28508bc8ce995722fd5" },
   "base46": { "branch": "v2.5", "commit": "fde7a2cd54599e148d376f82980407c2d24b0fa2" },
@@ -76,7 +76,7 @@
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "ad7d9580338354ccc136e5b8f0aa4f880434dcdc" },
   "timber.nvim": { "branch": "main", "commit": "aac3a12753652a60955d3178b75fdb6c247b9f7d" },
-  "tiny-code-action.nvim": { "branch": "main", "commit": "f97b7d349a15b1f6884c9038f8f2ec5ff5325f34" },
+  "tiny-code-action.nvim": { "branch": "main", "commit": "15bf3e25e25ec5a9d5878e9f57bd65f92ce250a9" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "treesj": { "branch": "main", "commit": "186084dee5e9c8eec40f6e39481c723dd567cb05" },
   "trim.nvim": { "branch": "master", "commit": "765360a6f6ac732f4c78c5c694f4b892a55b53ec" },
