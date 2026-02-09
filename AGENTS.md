@@ -164,8 +164,7 @@ end
 
 ### Configured LSP Servers
 
-pylsp, gopls, dockerls, ruff, jsonls, groovyls, yamlls,
-rust_analyzer, vacuum, bashls, just, marksman, serve_d
+pyright, gopls, ruff, jsonls, rust_analyzer, marksman, serve_d
 
 ## Formatters (conform.nvim)
 
@@ -202,6 +201,23 @@ Add plugin specs to `lua/plugins/init.lua`:
   opts = {},
 },
 ```
+
+### Installing Plugins with Keymaps
+
+When adding plugins that define keymaps:
+
+1. **Check for conflicts** before adding:
+   - Review `lua/mappings.lua` for existing keymaps
+   - Check NvChad defaults in `~/.local/share/nvim/lazy/NvChad/lua/nvchad/mappings.lua`
+   - Search existing plugin specs in `lua/plugins/init.lua` for `keys = {`
+
+2. **Keymap prefix conventions**:
+   - `<leader>` (Space) - Primary keymaps
+   - `<localleader>` (,) - Buffer/filetype-specific actions
+
+3. **If conflicts exist**, either:
+   - Choose a different keymap for the new plugin
+   - Remap the existing conflicting keymap to `<localleader>` or another prefix
 
 ### Adding Keymaps
 
