@@ -644,7 +644,7 @@ return {
   -- trail cursor
   {
     "danilamihailov/beacon.nvim",
-    event = "VeryLazy",
+    event = "CursorMoved",
   },
   -- better Quickfix
   {
