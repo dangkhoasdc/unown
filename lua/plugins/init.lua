@@ -278,8 +278,8 @@ return {
   {
     url = "https://codeberg.org/andyg/leap.nvim",
     keys = {
-      { "S", "<Plug>(leap-anywhere)", mode = "n",          desc = "Leap anywhere" },
-      { "S", "<Plug>(leap)",          mode = { "x", "o" }, desc = "Leap" },
+      { "s", "<Plug>(leap-anywhere)", mode = "n",          desc = "Leap anywhere" },
+      { "s", "<Plug>(leap)",          mode = { "x", "o" }, desc = "Leap" },
     },
     config = function()
       require("leap").opts.preview_filter = function(ch0, ch1, ch2)
