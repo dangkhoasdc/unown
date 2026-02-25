@@ -641,10 +641,17 @@ return {
     end,
   },
 
-  -- trail cursor
+  -- animate cursor, scroll, resize, window open/close
   {
-    "danilamihailov/beacon.nvim",
-    event = "CursorMoved",
+    "echasnovski/mini.animate",
+    event = "VeryLazy",
+    opts = {
+      cursor = { enable = true },
+      scroll = { enable = false },
+      resize = { enable = true },
+      open = { enable = false },
+      close = { enable = false },
+    },
   },
   -- better Quickfix
   {
