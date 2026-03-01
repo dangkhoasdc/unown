@@ -65,6 +65,7 @@ map({ "n", "x" }, "gra", function()
 end, { noremap = true, silent = true, desc = "Open Code Action" })
 
 -- TAB
+map("t", "<Tab>", "<Tab>", { desc = "Pass Tab to terminal" })
 map("n", "<TAB>", "<C-^>", { noremap = true, silent = true, desc = "Toggle last buffer" })
 map("n", "<S-TAB>", function()
   require("telescope.builtin").buffers {
