@@ -1,4 +1,12 @@
-require("lint").linters_by_ft = {
+local lint = require "lint"
+
+lint.linters.yamllint.args = {
+  "-d", "{extends: default, rules: {line-length: disable}}",
+  "-f", "parsable",
+  "-",
+}
+
+lint.linters_by_ft = {
   make = { "checkmake" },
   groovy = { "npm-groovy-lint" },
   yaml = { "yamllint" },
