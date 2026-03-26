@@ -258,6 +258,14 @@ return {
       "nvim-lua/plenary.nvim",
     },
     opts = {
+      interactions = {
+        chat = {
+          adapter = {
+            name = "opencode",
+            model = "claude-opus-4.5",
+          },
+        },
+      },
       strategies = {
         chat = {
           adapter = "copilot",
