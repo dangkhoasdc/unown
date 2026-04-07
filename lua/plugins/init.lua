@@ -1,5 +1,11 @@
 return {
   -- General
+  -- nvim-treesitter: use main branch for Neovim 0.12 compatibility
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+  },
+
   -- Deal with editing config file
   {
     "folke/lazydev.nvim",
@@ -353,7 +359,7 @@ return {
       require("nvim-surround").setup {}
     end,
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
   },
 
@@ -838,6 +844,7 @@ return {
         checkbox = {
           enabled = false,
         },
+        restart_highlighter = true,
       }
     end,
   },
