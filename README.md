@@ -4,3 +4,9 @@
 git clone git@github.com:dangkhoasdc/unown ~/.config/nvim
 nvim
 ```
+
+## Requirements
+
+- node >= 20
+- ripgrep
+- treesitter-cli
