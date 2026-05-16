@@ -4,6 +4,17 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
+    opts = {
+      ensure_installed = {
+        "python",
+        "julia",
+        "go",
+        "rust",
+        "cpp",
+        "nim",
+        "d",
+      },
+    },
   },
 
   -- Deal with editing config file
@@ -844,7 +855,6 @@ return {
         checkbox = {
           enabled = false,
         },
-        restart_highlighter = true,
       }
     end,
   },
