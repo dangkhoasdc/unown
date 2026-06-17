@@ -7,7 +7,7 @@ nvim
 
 ## Requirements
 
-- node >= 20
+- [node >= 20](https://nodejs.org/en/download)
 - [ripgrep](https://github.com/burntsushi/ripgrep#installation)
 - treesitter-cli:
 
