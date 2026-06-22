@@ -9,7 +9,7 @@ nvim
 
 - [node >= 20](https://nodejs.org/en/download)
 - [ripgrep](https://github.com/burntsushi/ripgrep#installation)
-- treesitter-cli:
+- treesitter-cli (better build from source though; some old Ubuntu version doesn't support running from `binstall` version)
 
 ```bash
 curl https://sh.rustup.rs -sSf | sh
