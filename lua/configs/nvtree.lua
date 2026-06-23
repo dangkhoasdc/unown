@@ -14,6 +14,9 @@ nvimtree.setup({
   hijack_netrw = true,
   respect_buf_cwd = true,
   sync_root_with_cwd = true,
+  update_focused_file = {
+    enable = true,
+  },
   view = {
     relativenumber = true,
     float = {
