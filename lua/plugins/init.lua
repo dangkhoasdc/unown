@@ -1,4 +1,45 @@
 return {
+  -- Colorscheme: nightfox.nvim — highly customizable theme with colorblind support
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nightfox").setup {
+        options = {
+          colorblind = {
+            enable = true,
+            simulate_only = false,
+            severity = {
+              protan = 0,
+              deutan = 0,
+              tritan = 0,
+            },
+          },
+          styles = {
+            comments = "NONE",
+          },
+        },
+        palettes = {
+          carbonfox = {
+            comment = "#8f9092", -- ~55% fg blend (~5.5:1 contrast, passes WCAG AA)
+          },
+        },
+        groups = {
+          carbonfox = {
+            ["@method"] = { fg = "fg1" },
+            ["@method.call"] = { fg = "fg1" },
+            ["@property"] = { fg = "fg1" },
+            ["@field"] = { fg = "fg1" },
+            ["@variable.member"] = { fg = "fg1" },
+            ["@constant"] = { fg = "#edc168" },
+            ["@constant.macro"] = { fg = "#edc168" },
+          },
+        },
+      }
+    end,
+  },
+
   -- General
   -- nvim-treesitter: use main branch for Neovim 0.12 compatibility
   {
