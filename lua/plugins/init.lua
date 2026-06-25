@@ -54,6 +54,8 @@ return {
         "cpp",
         "nim",
         "d",
+        "bash",
+        "zsh",
       },
     },
   },
