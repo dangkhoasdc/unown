@@ -39,6 +39,10 @@ map("n", "<leader>fs", function()
   }
 end, { desc = "[F]ind [S]ymbols", noremap = true, silent = true })
 
+map("n", "<leader>fg", function()
+  require("telescope.builtin").git_status()
+end, { desc = "[F]ind [G]it changes" })
+
 -- remap terms, otherwise it conflicts which resizing panes/windows
 
 vim.keymap.del("n", "<A-h>")

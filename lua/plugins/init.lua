@@ -451,6 +451,7 @@ return {
       { "<leader>fw", desc = "Find word with args" },
       { "<leader>fW", desc = "Find current word" },
       { "<leader>fs", desc = "Find symbols" },
+      { "<leader>fg", desc = "Find git changes" },
       { "<S-TAB>",    desc = "Telescope buffers" },
     },
     config = function()
