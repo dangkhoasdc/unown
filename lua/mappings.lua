@@ -101,5 +101,37 @@ map('n', '\\q', function()
   vim.cmd('botright ' .. action)
 end, { noremap = true, silent = true })
 
+-- Avante with AWS SSO auto-login check
+local function avante_with_aws_check(cmd)
+  vim.fn.jobstart(
+    { "aws", "sts", "get-caller-identity", "--profile", "claude-code" },
+    {
+      stdout_buffered = true,
+      stderr_buffered = true,
+      on_exit = function(_, exit_code)
+        if exit_code == 0 then
+          vim.schedule(function() vim.cmd(cmd) end)
+        else
+          vim.schedule(function()
+            vim.ui.input({ prompt = "AWS SSO session expired. Login? [y/N]: " }, function(input)
+              if input and input:lower():match "^y" then
+                vim.cmd "botright 15split | terminal aws sso login --profile claude-code"
+                vim.cmd "startinsert"
+                vim.notify("After login, press the key again", vim.log.levels.INFO)
+              else
+                vim.notify("AWS login skipped — avante may not work", vim.log.levels.WARN)
+              end
+            end)
+          end)
+        end
+      end,
+    }
+  )
+end
+
+map("n", "<localleader>ca", function() avante_with_aws_check "AvanteAsk" end, { desc = "Avante [A]sk" })
+map("n", "<localleader>cc", function() avante_with_aws_check "AvanteToggle" end, { desc = "Avante Chat Toggle" })
+map("n", "grc", function() avante_with_aws_check "AvanteAsk" end, { desc = "Avante Ask" })
+
 -- Others
-map('n', "<F12>", ":Lazy sync<cr>", {desc = "Sync Plugins"})
+map('n', "<F12>", ":Lazy sync<cr>", { desc = "Sync Plugins" })

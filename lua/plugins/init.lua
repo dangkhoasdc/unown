@@ -290,56 +290,66 @@ return {
   },
 
   {
-    "olimorris/codecompanion.nvim",
-    keys = {
-      {
-        "<localleader>ca",
-        "<cmd>CodeCompanionActions<cr>",
-        desc = "Code[c]ompanion [a]ctions",
-        noremap = true,
-        silent = true,
-      },
-      {
-        "<localleader>cc",
-        "<cmd>CodeCompanionChat Toggle<cr>",
-        desc = "Code[c]companion [c]hat",
-        noremap = true,
-        silent = true,
-      },
-      {
-        "grc",
-        "<cmd>CodeCompanionChat Add<cr>",
-        desc = "Code[c]ompanion [c]hat add",
-        noremap = true,
-        silent = true,
-      },
+    "yetone/avante.nvim",
+    build = "make",
+    cmd = {
+      "AvanteAsk",
+      "AvanteToggle",
+      "AvanteChat",
+      "AvanteEdit",
+      "AvanteRefresh",
+      "AvanteFocus",
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
+    config = function(_, opts)
+      require("avante").setup(opts)
+      -- Claude Opus 4.7 refuses temperature; strip it from the cached provider object
+      require("avante.providers").bedrock.extra_request_body.temperature = nil
+    end,
     opts = {
-      interactions = {
-        chat = {
-          adapter = {
-            name = "opencode",
-            model = "claude-opus-4.5",
+      provider = "bedrock",
+      providers = {
+        bedrock = {
+          model = "us.anthropic.claude-opus-4-7",
+          aws_profile = "claude-code",
+          aws_region = "us-east-1",
+          extra_request_body = {
+            max_tokens = 64000,
           },
         },
       },
-      strategies = {
-        chat = {
-          adapter = "copilot",
-        },
-      },
-      display = {
-        chat = {
-          window = {
-            width = 0.25,
-            height = 0.8,
+      acp_providers = {
+        ["claude-code"] = {
+          command = "acp-claude-code",
+          args = {},
+          env = {
+            NODE_NO_WARNINGS = "1",
           },
         },
+        ["opencode"] = {
+          command = "opencode",
+          args = { "acp" },
+        },
+      },
+      behaviour = {
+        auto_suggestions = false,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = false,
+      },
+      windows = {
+        width = 30,
       },
     },
+  },
+
+  {
+    "Kaiser-Yang/blink-cmp-avante",
+    dependencies = "yetone/avante.nvim",
+    lazy = true,
   },
 
   -- Movements
@@ -893,7 +903,7 @@ return {
   -- -- markdown
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" },
+    ft = { "markdown", "Avante" },
     config = function()
       require("render-markdown").setup {
         checkbox = {
