@@ -928,6 +928,11 @@ return {
   {
     "chenxin-yan/footnote.nvim",
     ft = "markdown",
+    keys = {
+      n = {
+        organize_footnotes = "<localleader>fo",
+      },
+    },
     opts = {},
   },
 }
