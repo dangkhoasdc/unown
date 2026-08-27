@@ -103,30 +103,46 @@ end, { noremap = true, silent = true })
 
 -- Avante with AWS SSO auto-login check
 local function avante_with_aws_check(cmd)
-  vim.fn.jobstart(
-    { "aws", "sts", "get-caller-identity", "--profile", "claude-code" },
-    {
-      stdout_buffered = true,
-      stderr_buffered = true,
-      on_exit = function(_, exit_code)
-        if exit_code == 0 then
-          vim.schedule(function() vim.cmd(cmd) end)
-        else
-          vim.schedule(function()
-            vim.ui.input({ prompt = "AWS SSO session expired. Login? [y/N]: " }, function(input)
-              if input and input:lower():match "^y" then
-                vim.cmd "botright 15split | terminal aws sso login --profile claude-code"
-                vim.cmd "startinsert"
-                vim.notify("After login, press the key again", vim.log.levels.INFO)
-              else
-                vim.notify("AWS login skipped — avante may not work", vim.log.levels.WARN)
-              end
-            end)
-          end)
-        end
-      end,
-    }
-  )
+  vim.fn.jobstart({ "aws", "sts", "get-caller-identity", "--profile", "claude-code" }, {
+    stdout_buffered = true,
+    stderr_buffered = true,
+    on_exit = function(_, exit_code)
+      if exit_code == 0 then
+        vim.schedule(function() vim.cmd(cmd) end)
+        return
+      end
+      vim.schedule(function()
+        vim.ui.input({ prompt = "AWS SSO session expired. Login? [y/N]: " }, function(input)
+          if not (input and input:lower():match "^y") then
+            vim.notify("AWS login skipped — avante may not work", vim.log.levels.WARN)
+            return
+          end
+          -- :new (not :split) so termopen gets a fresh buffer; :split would
+          -- convert the current buffer into the terminal in both windows
+          vim.cmd "botright 15new"
+          local term_buf = vim.api.nvim_get_current_buf()
+          vim.fn.termopen("aws sso login --profile claude-code", {
+            on_exit = function(_, code)
+              vim.schedule(function()
+                -- close the login terminal split and wipe its buffer
+                for _, win in ipairs(vim.fn.win_findbuf(term_buf)) do
+                  pcall(vim.api.nvim_win_close, win, true)
+                end
+                pcall(vim.api.nvim_buf_delete, term_buf, { force = true })
+                if code == 0 then
+                  vim.notify("AWS SSO login succeeded", vim.log.levels.INFO)
+                  vim.cmd(cmd) -- auto-run the original Avante command
+                else
+                  vim.notify("AWS SSO login failed (exit " .. code .. ")", vim.log.levels.ERROR)
+                end
+              end)
+            end,
+          })
+          vim.cmd "startinsert"
+        end)
+      end)
+    end,
+  })
 end
 
 map("n", "<localleader>ca", function() avante_with_aws_check "AvanteAsk" end, { desc = "Avante [A]sk" })
